@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\test\test_complex_calculator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\test\test_complex_number.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\test\test_korniakov_kirill_complex_number.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\test\test_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{D07FAFE3-DA12-3009-9FF4-1F1F3606FD8E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

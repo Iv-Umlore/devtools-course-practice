@@ -1,0 +1,17 @@
+# Target labels
+ complex-number
+ Library
+# Source files and their labels
+D:/PROGRAMS/devtools-course-practice/modules/complex-number/src/complex_calculator.cxx
+ complex-number
+ Library
+D:/PROGRAMS/devtools-course-practice/modules/complex-number/src/complex_number.cxx
+ complex-number
+ Library
+D:/PROGRAMS/devtools-course-practice/modules/complex-number/include/complex_calculator.h
+ complex-number
+ Library
+D:/PROGRAMS/devtools-course-practice/modules/complex-number/include/complex_number.h
+ complex-number
+ Library
+D:/PROGRAMS/devtools-course-practice/modules/complex-number/src/CMakeLists.txt

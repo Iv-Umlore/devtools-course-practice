@@ -1,0 +1,35 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "D:/PROGRAMS/devtools-course-practice/modules/complex-number/src/complex_calculator.cxx",
+			"labels" : [ "complex-number", "Library" ]
+		},
+		
+		{
+			"file" : "D:/PROGRAMS/devtools-course-practice/modules/complex-number/src/complex_number.cxx",
+			"labels" : [ "complex-number", "Library" ]
+		},
+		
+		{
+			"file" : "D:/PROGRAMS/devtools-course-practice/modules/complex-number/include/complex_calculator.h",
+			"labels" : [ "complex-number", "Library" ]
+		},
+		
+		{
+			"file" : "D:/PROGRAMS/devtools-course-practice/modules/complex-number/include/complex_number.h",
+			"labels" : [ "complex-number", "Library" ]
+		},
+		
+		{
+			"file" : "D:/PROGRAMS/devtools-course-practice/modules/complex-number/src/CMakeLists.txt"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "complex-number", "Library" ],
+		"name" : "lib_complex-number"
+	}
+}

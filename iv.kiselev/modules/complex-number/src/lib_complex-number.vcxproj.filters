@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\src\complex_calculator.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\src\complex_number.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\include\complex_calculator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\include\complex_number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\PROGRAMS\devtools-course-practice\modules\complex-number\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{D07FAFE3-DA12-3009-9FF4-1F1F3606FD8E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{FB3D5592-D4A6-37D6-8755-19700153EABF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
