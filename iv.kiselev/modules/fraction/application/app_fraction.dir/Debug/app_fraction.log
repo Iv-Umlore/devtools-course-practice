@@ -1,0 +1,4 @@
+﻿  Building Custom Rule D:/PROGRAMS/devtools-course-practice/modules/fraction/application/CMakeLists.txt
+  CMake does not need to re-run because D:/PROGRAMS/devtools-course-practice/iv.kiselev/modules/fraction/application/CMakeFiles/generate.stamp is up-to-date.
+  fractioncalc.cpp
+  app_fraction.vcxproj -> D:\PROGRAMS\devtools-course-practice\iv.kiselev\bin\fraction.exe

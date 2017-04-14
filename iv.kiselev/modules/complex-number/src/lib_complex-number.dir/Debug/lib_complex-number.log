@@ -1,0 +1,6 @@
+﻿  Building Custom Rule D:/PROGRAMS/devtools-course-practice/modules/complex-number/src/CMakeLists.txt
+  CMake does not need to re-run because D:/PROGRAMS/devtools-course-practice/iv.kiselev/modules/complex-number/src/CMakeFiles/generate.stamp is up-to-date.
+  complex_calculator.cxx
+  complex_number.cxx
+  Создание кода...
+  lib_complex-number.vcxproj -> D:\PROGRAMS\devtools-course-practice\iv.kiselev\lib\complex-number.lib

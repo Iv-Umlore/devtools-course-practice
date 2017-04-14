@@ -23,3 +23,13 @@ TEST(Kiselev_complex_number_test, multiplication_test)
 	ComplexNumber result(0, 13.0);
 	EXPECT_TRUE(result == first * second);
 }
+
+TEST(Kiselev_complex_number_test, division_test)
+{
+	ComplexNumber first(2.0, 2.0);
+	ComplexNumber second(2.0, 2.0);
+	ComplexNumber result(1.0,0.0);
+	EXPECT_TRUE(result == first / second);
+}
+
+

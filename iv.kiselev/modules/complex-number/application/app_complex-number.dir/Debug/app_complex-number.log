@@ -1,0 +1,4 @@
+﻿  Building Custom Rule D:/PROGRAMS/devtools-course-practice/modules/complex-number/application/CMakeLists.txt
+  CMake does not need to re-run because D:/PROGRAMS/devtools-course-practice/iv.kiselev/modules/complex-number/application/CMakeFiles/generate.stamp is up-to-date.
+  complex-number.cpp
+  app_complex-number.vcxproj -> D:\PROGRAMS\devtools-course-practice\iv.kiselev\bin\complex-number.exe

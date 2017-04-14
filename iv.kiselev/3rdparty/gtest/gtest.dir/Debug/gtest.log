@@ -1,0 +1,4 @@
+﻿  Building Custom Rule D:/PROGRAMS/devtools-course-practice/3rdparty/gtest/CMakeLists.txt
+  CMake does not need to re-run because D:/PROGRAMS/devtools-course-practice/iv.kiselev/3rdparty/gtest/CMakeFiles/generate.stamp is up-to-date.
+  gtest-all.cc
+  gtest.vcxproj -> D:\PROGRAMS\devtools-course-practice\iv.kiselev\lib\gtest.lib
