@@ -1,8 +1,0 @@
-# Target labels
- complex-number
- Application
-# Source files and their labels
-D:/PROGRAMS/devtools-course-practice/modules/complex-number/application/complex-number.cpp
- complex-number
- Application
-D:/PROGRAMS/devtools-course-practice/modules/complex-number/application/CMakeLists.txt
