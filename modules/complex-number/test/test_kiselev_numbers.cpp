@@ -8,6 +8,7 @@ TEST(Kiselev_complex_number_test, simple_test)
 	EXPECT_TRUE(first == second);
 }
 
+
 TEST(Kiselev_complex_number_test, Add_test)
 {
 	ComplexNumber first(3.0, 2.5);
