@@ -11,7 +11,7 @@ typedef TMonom* PTMonom;
 
 class TPolinom : public THeadRing {
 public:
-	TPolinom(int monoms[][2] = NULL, int km = 0);
+	TPolinom(int monoms[][4] = NULL, int km = 0);
 	 //km => количесво мономом, ну и дерьмо
 	 // конструктор
 	 // полинома из массива «коэффициент-индекс»
@@ -28,14 +28,14 @@ public:
 	void AddMonom(TMonom* monom);
 };
 
-TPolinom::TPolinom(int monoms[][2], int km)
+TPolinom::TPolinom(int monoms[][4], int km)
 {
 	
-	PTMonom Monom = new TMonom(0, 0);
+	PTMonom Monom = new TMonom(0, 0, 0, 0);
 	pHead->SetDatValue(Monom);
 	for (int i = 0; i < km; i++)
 	{
-		Monom = new TMonom(monoms[i][0], monoms[i][1]);
+		Monom = new TMonom(monoms[i][0], monoms[i][1], monoms[i][2] , monoms[i][3]);
 		InsLast(Monom);
 	}
 	Reset();
@@ -43,7 +43,7 @@ TPolinom::TPolinom(int monoms[][2], int km)
 
 TPolinom::TPolinom(TPolinom & q)
 {
-		PTMonom Monom = new TMonom(0, 0);
+		PTMonom Monom = new TMonom(0, 0, 0, 0);
 		pHead->SetDatValue(Monom);
 		for (q.Reset();!q.IsListEnded(); q.GoNext())
 		{
@@ -108,15 +108,15 @@ bool TPolinom::operator==( TPolinom &q)
 }
 
 // переработать
-void TPolinom::AddMonom(TMonom * monom)
+void TPolinom::AddMonom(TMonom * monom)			//доделать здесь
 {
 	Reset();
-	while (!IsListEnded() && (GetMonom()->GetIndex() > monom->GetIndex()))
+	while (!IsListEnded() && (GetMonom() < monom))
 	{
 		GoNext();
 	}
 	if (!IsListEnded())
-		if (GetMonom()->GetIndex() == monom->GetIndex())
+		if (GetMonom() == monom)
 		{
 			GetMonom()->SetCoeff(monom->GetCoeff() + GetMonom()->GetCoeff());
 			if (GetMonom()->GetCoeff() == 0) 

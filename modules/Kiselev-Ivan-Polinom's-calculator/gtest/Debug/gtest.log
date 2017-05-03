@@ -1,0 +1,35 @@
+﻿  test_main.cpp
+  Создание кода...
+  Компиляция...
+  other_tests.cpp
+  Создание кода...
+  Компиляция...
+  test_default.cpp
+  Создание кода...
+test_default.obj : error LNK2005: "public: __thiscall TDatList::TDatList(void)" (??0TDatList@@QAE@XZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: __thiscall THeadRing::THeadRing(void)" (??0THeadRing@@QAE@XZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: __thiscall TPolinom::TPolinom(class TPolinom &)" (??0TPolinom@@QAE@AAV0@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: __thiscall TPolinom::TPolinom(int (* const)[2],int)" (??0TPolinom@@QAE@QAY01HH@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: __thiscall THeadRing::~THeadRing(void)" (??1THeadRing@@QAE@XZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: class TPolinom & __thiscall TPolinom::operator=(class TPolinom &)" (??4TPolinom@@QAEAAV0@AAV0@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class TPolinom &)" (??6@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV01@AAVTPolinom@@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: bool __thiscall TPolinom::operator==(class TPolinom &)" (??8TPolinom@@QAE_NAAV0@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: class TPolinom & __thiscall TPolinom::operator+(class TPolinom &)" (??HTPolinom@@QAEAAV0@AAV0@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: void __thiscall TPolinom::AddMonom(class TMonom &)" (?AddMonom@TPolinom@@QAEXAAVTMonom@@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall TDatList::DelCurrent(void)" (?DelCurrent@TDatList@@UAEXXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall TDatList::DelFirst(void)" (?DelFirst@TDatList@@UAEXXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall THeadRing::DelFirst(void)" (?DelFirst@THeadRing@@UAEXXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "protected: void __thiscall TDatList::DelLink(class TDatLink *)" (?DelLink@TDatList@@IAEXPAVTDatLink@@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall TDatList::DelList(void)" (?DelList@TDatList@@UAEXXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual class TDatValue * __thiscall TMonom::GetCopy(void)" (?GetCopy@TMonom@@UAEPAVTDatValue@@XZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: int __thiscall TDatList::GetCurrentPos(void)const " (?GetCurrentPos@TDatList@@QBEHXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: class TDatValue * __thiscall TDatList::GetDatValue(int)" (?GetDatValue@TDatList@@QAEPAVTDatValue@@H@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: int __thiscall TDatList::GoNext(void)" (?GoNext@TDatList@@QAEHXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall TDatList::InsCurrent(class TDatValue *)" (?InsCurrent@TDatList@@UAEXPAVTDatValue@@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall TDatList::InsFirst(class TDatValue *)" (?InsFirst@TDatList@@UAEXPAVTDatValue@@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall THeadRing::InsFirst(class TDatValue *)" (?InsFirst@THeadRing@@UAEXPAVTDatValue@@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall TDatList::InsLast(class TDatValue *)" (?InsLast@TDatList@@UAEXPAVTDatValue@@@Z) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual bool __thiscall TDatList::IsListEnded(void)const " (?IsListEnded@TDatList@@UBE_NXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: virtual void __thiscall TDatList::Reset(void)" (?Reset@TDatList@@UAEXXZ) уже определен в other_tests.obj
+test_default.obj : error LNK2005: "public: void __thiscall TDatList::SetCurrentPos(int)" (?SetCurrentPos@TDatList@@QAEXH@Z) уже определен в other_tests.obj
+D:\PROGRAMS\Storage\mp2-lab5-poly\src\Kiselev_Ivan\polynoms\Debug\gtest.exe : fatal error LNK1169: обнаружен многократно определенный символ - один или более

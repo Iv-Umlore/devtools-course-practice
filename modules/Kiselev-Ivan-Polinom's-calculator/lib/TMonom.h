@@ -9,12 +9,16 @@
 class TMonom : public TDatValue {
 protected:
 	int Coeff; // коэффициент монома
-	int Index; // индекс (свертка степеней)
+	int XInd; // индекс X
+	int YInd; // индекс Y
+	int ZInd; // индекс Z
 public:
-	TMonom(int cval = 1, int ival = 0) 
+	TMonom(int cval = 1, int x = 0 , int y = 0, int z = 0) 
 	{
-		Coeff = cval; 
-		Index = ival;
+		Coeff = cval;
+		XInd = x;
+		YInd = y;
+		ZInd = z;
 	};
 
 	~TMonom() {};
@@ -30,48 +34,74 @@ public:
 		return Coeff; 
 	}
 
-	void SetIndex(int ival) 
+	void SetIndexX(int ival) 
 	{ 
-		Index = ival; 
+		XInd = ival; 
 	}
 
-	int  GetIndex(void) 
+	void SetIndexY(int ival)
+	{
+		YInd = ival;
+	}
+
+	void SetIndexZ(int ival)
+	{
+		ZInd = ival;
+	}
+
+	int  GetIndexX(void) 
 	{ 
-		return Index; 
+		return XInd; 
+	}
+
+	int  GetIndexY(void)
+	{
+		return YInd;
+	}
+
+	int  GetIndexZ(void)
+	{
+		return ZInd;
 	}
 
 	TMonom& operator=(const TMonom &tm) 
 	{
 		Coeff = tm.Coeff;
-		Index = tm.Index;
+		XInd = tm.XInd;
+		YInd = tm.YInd;
+		ZInd = tm.ZInd;
 		return *this;
 	}
 	friend ostream& operator<<(ostream &os, TMonom * tm) 
 	{
-		int x, y, z;
-		x = (tm->Index / 100);
-		y = ((tm->Index % 100) / 10);
-		z = (tm->Index % 10);
 		if (tm->Coeff > 0)
 			os << " + " << tm->Coeff;
 		else
 			os << " - " << -tm->Coeff;
-		if (x > 0) os << " * x^" << x;
-		if (y > 0) os << " * y^" << y;
-		if (z > 0) os << " * z^" << z;
-		//os << tm.Coeff << " " << tm.Index;
+		os << " * x^" << tm->XInd;
+		os << " * y^" << tm->YInd;
+		os << " * z^" << tm->ZInd;
 		return os;
 	}
 
 
 	bool TMonom::operator==(const TMonom &tm) 
 	{
-		return ((Coeff == tm.Coeff) && (Index == tm.Index));
+		return ((Coeff == tm.Coeff) && (XInd == tm.XInd) && (YInd == tm.YInd) && (ZInd == tm.ZInd));
 	}
 
 	bool operator<(const TMonom &tm) 
 	{
-		return Index < tm.Index;
+		if (*this == tm) return false;
+		bool res = true;
+		if (XInd < tm.XInd)
+			if (YInd < tm.YInd)
+				if (ZInd < tm.ZInd)
+					res = true;
+				else res = false;
+			else res = false;
+		else res = false;
+		return res;
 	}
 
 	friend class TPolinom;
@@ -80,7 +110,7 @@ public:
 
 TDatValue* TMonom::GetCopy()
 {
-	return new TMonom(Coeff, Index);
+	return new TMonom(Coeff, XInd, YInd, ZInd);
 }
 
 #endif
