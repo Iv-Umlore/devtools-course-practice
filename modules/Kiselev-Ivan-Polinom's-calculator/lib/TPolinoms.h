@@ -108,7 +108,7 @@ bool TPolinom::operator==( TPolinom &q)
 }
 
 // переработать
-void TPolinom::AddMonom(TMonom * monom)			//доделать здесь
+void TPolinom::AddMonom(TMonom * monom)		
 {
 	Reset();
 	while (!IsListEnded() && (GetMonom() < monom))

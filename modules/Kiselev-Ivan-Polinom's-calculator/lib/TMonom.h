@@ -90,18 +90,24 @@ public:
 		return ((Coeff == tm.Coeff) && (XInd == tm.XInd) && (YInd == tm.YInd) && (ZInd == tm.ZInd));
 	}
 
-	bool operator<(const TMonom &tm) 
+	bool operator<(const TMonom &tm) // prioritet x > y > z
 	{
 		if (*this == tm) return false;
-		bool res = true;
-		if (XInd < tm.XInd)
-			if (YInd < tm.YInd)
-				if (ZInd < tm.ZInd)
-					res = true;
-				else res = false;
-			else res = false;
-		else res = false;
-		return res;
+		
+		if (XInd > tm.XInd)
+			return false;
+		else if (XInd < tm.XInd)
+			return true;
+		//XInd == tm.XInd
+		if (YInd > tm.YInd)
+			return false;
+		else if (YInd < tm.YInd)
+			return true;
+		// & YInd == tm.YInd
+		if (ZInd > tm.ZInd)
+			return false;
+		else if (ZInd < tm.ZInd)
+			return true;
 	}
 
 	friend class TPolinom;
