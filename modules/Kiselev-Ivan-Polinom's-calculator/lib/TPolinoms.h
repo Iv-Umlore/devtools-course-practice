@@ -20,11 +20,14 @@ public:
 	PTMonom  GetMonom() { return (PTMonom)GetDatValue(); }
 
 	TPolinom& operator+(TPolinom &q); // сложение полиномов
+	TPolinom& operator-(TPolinom &q); // вычитание полиномов
+	TPolinom& operator*(TPolinom &q); // умножение полиномов
 	TPolinom& operator=(TPolinom &q); // присваивание
 	bool operator==(TPolinom &q);				   //дополнительные функции
 
 	friend ostream& operator<<(ostream &os, TPolinom &q);
-	void AddMonom(TMonom* monom);
+	void AddMonom(TMonom* monom);		// добавить к полиному Моном
+	void SubMonom(TMonom* monom);		// вычесть из Полинома Моном
 };
 
 TPolinom::TPolinom(int monoms[][4], int km)
@@ -68,6 +71,36 @@ TPolinom & TPolinom::operator+(TPolinom & q)
 	return *old;
 }
 
+TPolinom & TPolinom::operator-(TPolinom & q)
+{
+	TPolinom* old = new TPolinom(q);
+	Reset();
+	while (!IsListEnded())
+	{
+		old->SubMonom(GetMonom());
+		GoNext();
+	}
+	Reset();
+	q.Reset();
+	old->Reset();
+	return *old;
+}
+
+/*TPolinom & TPolinom::operator*(TPolinom & q)
+{
+	TPolinom* old = new TPolinom(q);
+	Reset();
+	while (!IsListEnded())
+	{
+		old->AddMonom(GetMonom());
+		GoNext();
+	}
+	Reset();
+	q.Reset();
+	old->Reset();
+	return *old;
+}*/
+
 TPolinom & TPolinom::operator=(TPolinom & q)
 {
 	for (q.Reset(); !q.IsListEnded(); q.GoNext())
@@ -106,18 +139,12 @@ bool TPolinom::operator==( TPolinom &q)
 	}
 }
 
-// переработать
 void TPolinom::AddMonom(TMonom * monom)		
 {
-	*this;
  	Reset();
-	PTMonom old= new TMonom(0,0,0,0);
-	while ((!IsListEnded() && !(GetMonom()->EqualityExponent(*monom)) && monom < GetMonom()) )
+	while ((!IsListEnded() && !(GetMonom()->EqualityExponent(*monom)) && (*monom < *GetMonom())) )
 	{
-		if ((monom->Coeff == 5) && (monom->ZInd == 2))
-			cout <<endl<< " GOOD "<<endl;
 		GoNext();
-		old = GetMonom();
 	}
 
 	if (!IsListEnded())
@@ -134,6 +161,27 @@ void TPolinom::AddMonom(TMonom * monom)
 	else InsLast(monom->GetCopy());
 }
 
+void TPolinom::SubMonom(TMonom * monom)
+{
+	Reset();
+	while ((!IsListEnded() && !(GetMonom()->EqualityExponent(*monom)) && (*monom < *GetMonom())))
+	{
+		GoNext();
+	}
+
+	if (!IsListEnded())
+		if (GetMonom()->EqualityExponent(*monom))
+		{
+			GetMonom()->SetCoeff(GetMonom()->GetCoeff() - monom->GetCoeff());
+			if (GetMonom()->GetCoeff() == 0)
+				DelCurrent();
+		}
+		else
+		{
+			InsCurrent(monom->GetCopy());
+		}
+	else InsLast(monom->GetCopy());
+}
 ostream& operator<<(ostream &os, TPolinom &q)
 {
 	TMonom* old = new TMonom();

@@ -90,31 +90,51 @@ public:
 		return ((Coeff == tm.Coeff) && (XInd == tm.XInd) && (YInd == tm.YInd) && (ZInd == tm.ZInd));
 	}
 
-	bool EqualityExponent(const TMonom &tm)
+	bool EqualityExponent(TMonom &tm)
 	{
 		return (XInd == tm.XInd) && (YInd == tm.YInd) && (ZInd == tm.ZInd);
 	}
 
-	bool operator<(const TMonom &tm) // prioritet x > y > z
+	bool operator<(TMonom &tm) // prioritet x > y > z
 	{
-		cout << "/n/nyPA/n/n";
 		if (EqualityExponent(tm)) return false;
 		if (XInd > tm.XInd)
 			return false;
 		else if (XInd < tm.XInd)
 			return true;
 		// XInd == tm.XInd
-		cout << "/n/nSecond/n/n";
 		if (YInd > tm.YInd)
 			return false;
 		else if (YInd < tm.YInd)
 			return true;
-		cout << "/n/nPROBLEMS HERE/n/n";
 		// & YInd == tm.YInd
 		if (ZInd > tm.ZInd)
 			return false;
 		else if (ZInd < tm.ZInd)
 			return true;
+
+		return false;
+	}
+
+	bool operator>(TMonom &tm) // prioritet x > y > z
+	{
+		if (EqualityExponent(tm)) return false;
+		if (XInd < tm.XInd)
+			return false;
+		else if (XInd > tm.XInd)
+			return true;
+		// XInd == tm.XInd
+		if (YInd < tm.YInd)
+			return false;
+		else if (YInd > tm.YInd)
+			return true;
+		// & YInd == tm.YInd
+		if (ZInd < tm.ZInd)
+			return false;
+		else if (ZInd > tm.ZInd)
+			return true;
+
+		return false;
 	}
 
 	friend class TPolinom;
