@@ -426,6 +426,34 @@ TEST(TPolinom, can_add_up_many_polynoms_3)
 
 TEST(TPolinom, can_subtract_simple_polinom)
 {
+	int size1 = 3;
+	int res_size = 3;
+	int mon1[][4] = { { 9, 0, 0, 4 },{ 8, 0, 0, 3 },{ 5, 0, 0, 2 } };
+	int mon2[][4] = { { 7, 0, 0, 4 } };
+	int resmon[][4] = { { 2, 0, 0, 4 },{ 8, 0, 0, 3 },{ 5, 0, 0, 2 } };
+	TPolinom first(mon1, size1);
+	TPolinom second(mon2, size1);
+	TPolinom res(resmon, res_size);
+	first = first - second;
+	cout << endl << endl << first << endl << endl;
+	bool expect = (res == first);
+	EXPECT_TRUE(expect);
+}
+
+
+TEST(TPolinom, can_subtract_polinom)
+{
+	int size1 = 3;
+	int res_size = 2;
+	int mon1[][4] = { { 9, 0, 0, 4 },{ 8, 0, 0, 3 },{ 5, 0, 0, 2 } };
+	int mon2[][4] = { { 7, 0, 0, 4},{ 8, 0, 0, 3}, { -2, 0, 0, 2} };
+	int resmon[][4] = { {2, 0, 0, 4},{ 7, 0, 0, 2} };
+	TPolinom first(mon1, size1);
+	TPolinom second(mon2, size1);
+	TPolinom res(resmon, res_size);
+	first = first - second;
+	cout << endl << endl << first << endl << endl;
+	EXPECT_TRUE(res == first);
 
 }
 
@@ -459,7 +487,7 @@ TEST(TPolinom, can_subtract_up_simple_polynoms_A_plus_B)
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol1 + Pol2;						// A + B
+	TPolinom Pol = Pol1 + Pol2;			
 
 	const int expected_size = 4;
 	int expected_mon[][4] = { { 2, 0, 0, 5 },{ 10, 0, 0, 4 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 } };
@@ -480,7 +508,7 @@ TEST(TPolinom, can_subtract_up_simple_polynoms_B_plus_A)
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol2 + Pol1;					// B + A
+	TPolinom Pol = Pol2 + Pol1;		
 
 	const int expected_size = 4;
 	int expected_mon[][4] = { { 2, 0, 0, 5 },{ 10, 0, 0, 4 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 } };

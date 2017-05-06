@@ -73,17 +73,15 @@ TPolinom & TPolinom::operator+(TPolinom & q)
 
 TPolinom & TPolinom::operator-(TPolinom & q)
 {
-	TPolinom* old = new TPolinom(q);
 	Reset();
-	while (!IsListEnded())
+	while (!q.IsListEnded())
 	{
-		old->SubMonom(GetMonom());
-		GoNext();
+		SubMonom(q.GetMonom());
+		q.GoNext();
 	}
 	Reset();
 	q.Reset();
-	old->Reset();
-	return *old;
+	return *this;
 }
 
 /*TPolinom & TPolinom::operator*(TPolinom & q)
