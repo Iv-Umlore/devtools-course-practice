@@ -6,7 +6,6 @@
 #include "THeadRing.h"
 #include "TMonom.h"
 
-
 typedef TMonom* PTMonom;
 
 class TPolinom : public THeadRing {
@@ -60,12 +59,12 @@ TPolinom & TPolinom::operator+(TPolinom & q)
 	Reset();
 	while (!IsListEnded())
 	{
-		q.Reset();
 		old->AddMonom(GetMonom());
 		GoNext();
 	}
 	Reset();
 	q.Reset();
+	old->Reset();
 	return *old;
 }
 
@@ -110,13 +109,19 @@ bool TPolinom::operator==( TPolinom &q)
 // переработать
 void TPolinom::AddMonom(TMonom * monom)		
 {
-	Reset();
-	while (!IsListEnded() && (GetMonom() < monom))
+	*this;
+ 	Reset();
+	PTMonom old= new TMonom(0,0,0,0);
+	while ((!IsListEnded() && !(GetMonom()->EqualityExponent(*monom)) && monom < GetMonom()) )
 	{
+		if ((monom->Coeff == 5) && (monom->ZInd == 2))
+			cout <<endl<< " GOOD "<<endl;
 		GoNext();
+		old = GetMonom();
 	}
+
 	if (!IsListEnded())
-		if (GetMonom() == monom)
+		if (GetMonom()->EqualityExponent(*monom))
 		{
 			GetMonom()->SetCoeff(monom->GetCoeff() + GetMonom()->GetCoeff());
 			if (GetMonom()->GetCoeff() == 0) 

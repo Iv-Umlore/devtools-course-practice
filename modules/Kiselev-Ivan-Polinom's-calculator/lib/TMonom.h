@@ -78,9 +78,9 @@ public:
 			os << " + " << tm->Coeff;
 		else
 			os << " - " << -tm->Coeff;
-		os << " * x^" << tm->XInd;
-		os << " * y^" << tm->YInd;
-		os << " * z^" << tm->ZInd;
+		if (tm->XInd != 0) os << " * x^" << tm->XInd;
+		if (tm->YInd != 0) os << " * y^" << tm->YInd;
+		if (tm->ZInd != 0) os << " * z^" << tm->ZInd;
 		return os;
 	}
 
@@ -90,19 +90,26 @@ public:
 		return ((Coeff == tm.Coeff) && (XInd == tm.XInd) && (YInd == tm.YInd) && (ZInd == tm.ZInd));
 	}
 
+	bool EqualityExponent(const TMonom &tm)
+	{
+		return (XInd == tm.XInd) && (YInd == tm.YInd) && (ZInd == tm.ZInd);
+	}
+
 	bool operator<(const TMonom &tm) // prioritet x > y > z
 	{
-		if (*this == tm) return false;
-		
+		cout << "/n/nyPA/n/n";
+		if (EqualityExponent(tm)) return false;
 		if (XInd > tm.XInd)
 			return false;
 		else if (XInd < tm.XInd)
 			return true;
-		//XInd == tm.XInd
+		// XInd == tm.XInd
+		cout << "/n/nSecond/n/n";
 		if (YInd > tm.YInd)
 			return false;
 		else if (YInd < tm.YInd)
 			return true;
+		cout << "/n/nPROBLEMS HERE/n/n";
 		// & YInd == tm.YInd
 		if (ZInd > tm.ZInd)
 			return false;
