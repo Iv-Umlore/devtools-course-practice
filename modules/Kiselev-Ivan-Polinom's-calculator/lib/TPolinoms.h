@@ -96,20 +96,14 @@ TPolinom & TPolinom::operator*(int mult)
 	return *this;
 }
 
-/*TPolinom & TPolinom::operator*(TPolinom & q)
+TPolinom & TPolinom::operator*(TPolinom & q)
 {
-	TPolinom* old = new TPolinom(q);
-	Reset();
-	while (!IsListEnded())
-	{
-		old->AddMonom(GetMonom());
-		GoNext();
-	}
-	Reset();
-	q.Reset();
-	old->Reset();
+	TPolinom* old = new TPolinom();
+	for (Reset(); !IsListEnded(); GoNext())
+		for (q.Reset(); !q.IsListEnded(); q.GoNext())
+			old->AddMonom(&(*GetMonom() * *q.GetMonom()));
 	return *old;
-}*/
+}
 
 TPolinom & TPolinom::operator=(TPolinom & q)
 {
@@ -126,8 +120,8 @@ TPolinom & TPolinom::operator=(TPolinom & q)
 	}
 	else
 	{
-		TPolinom that(q);
-		return that;
+		TPolinom* that= new TPolinom(q);
+		return *that;
 	}
 }
 
@@ -177,6 +171,7 @@ void TPolinom::AddMonom(TMonom * monom)
 			InsCurrent(monom->GetCopy());
 		}
 	else InsLast(monom->GetCopy());
+	Reset();
 }
 
 void TPolinom::SubMonom(TMonom * monom)

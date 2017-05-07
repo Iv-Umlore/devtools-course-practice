@@ -122,6 +122,15 @@ TEST(TMonom, Comparison_of_monomials_5)
 	EXPECT_FALSE(*first < *second);
 }
 
+TEST(TMonom, multiplication_Monom)
+{
+	TMonom first( 3, 1, 3, 5);
+	TMonom second( 4, 0, -3, 1);
+	TMonom result(12, 1, 0, 6);
+	first = first * second;
+	EXPECT_TRUE(result == first);
+}
+
 TEST(TPolinom, Auto_Equal)
 {
 	int mon[][4] = { { 1, 0, 0, 3 }};
@@ -432,8 +441,7 @@ TEST(TPolinom, can_subtract_simple_polinom)
 	TPolinom third(mon1, size1);
 	TPolinom res(resmon, res_size);
 	first = first - second;
-	bool expect = (res == first);
-	EXPECT_TRUE(expect);
+	EXPECT_TRUE(res == first);
 }
 
 
@@ -513,4 +521,42 @@ TEST(TPolinom, can_subtract_up_polynoms)
 	TPolinom expected_Pol(expected_mon, expected_size);
 
 	EXPECT_TRUE(Pol == expected_Pol);
+}
+
+TEST(TPolinom, multiplication_with_simple_polinom)
+{
+	int size1 = 4;
+	int size2 = 1;
+	int mon1[][4] = { { 5, 3, 0, 6 }, { 4, 2, 4, 3 }, { 10, 2, 3, 5 }, { 10, 0, 0, 0 } };
+	int mon2[][4] = { {2, 1, 1, 1} };
+	// 5*x^3*z^6 + 4*x^2*y^4*z^4 + 10*x^2*y^3*z^5 + 10	
+	int resMon[][4] = { { 10, 4, 1, 7 },{ 8, 3, 5, 4 },{ 20, 3, 4, 6 },{ 20, 1, 1, 1 } };
+	TPolinom first(mon1, size1);
+	// (2*x*y*z)
+	TPolinom second(mon2, size2);
+	TPolinom result(resMon, size1);
+	EXPECT_TRUE(result == (first * second));
+}
+
+TEST(TPolinom, multiplication_with_big_polinom_4x4)
+{
+	int size = 4;
+	int res_size = 16;
+	int mon1[][4] = { { 5, 3, 0, 6 },{ 5, 2, 4, 3 },{ 10, 2, 3, 5 },{ 10, 0, 0, 0 } };
+	int mon2[][4] = { { 2, 7, 5, 6},{ 7, 5, 3, 8},{ 12, 4, 6, 1}, { 3, 4, 2, 0} };
+	// 5*x^3*z^6 + 5*x^2*y^4*z^3 + 10*x^2*y^3*z^5 + 10
+	TPolinom first(mon1, size);
+	// 2*x^7*y^5*z^6 + 7*x^5*y^3*z^8 + 12*x^4*y^6*z + 3*x^4*y^2
+	TPolinom second(mon2, size);
+	int res_Mon[][4] = 
+	{ 
+		{ 10, 10, 5, 12},{ 10, 9, 9, 9 },{ 20, 9, 8, 11 },{ 35, 8, 3, 14},
+		{ 35, 7, 7, 11 },{ 70, 7, 6, 13 },{ 60, 7, 6, 7},{ 20, 7, 5, 6 },
+		{ 15, 7, 2, 6},{ 60, 6, 10, 4},{ 120, 6, 9, 6 },{ 15, 6, 6, 3},
+		{ 30, 6, 5, 5},{ 70, 5, 3, 8 },{ 120, 4, 6, 1 },{ 30, 4, 2, 0 }
+	};
+	TPolinom result(res_Mon, res_size);
+
+	EXPECT_TRUE(result == (first * second));
+
 }

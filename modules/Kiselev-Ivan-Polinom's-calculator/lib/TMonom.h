@@ -84,8 +84,17 @@ public:
 		return os;
 	}
 
+	TMonom operator*(TMonom &mon)
+	{
+		TMonom* that = new TMonom(0, 0, 0, 0);
+		that->Coeff = this->Coeff * mon.Coeff;
+		that->SetIndexX(this->GetIndexX() + mon.GetIndexX());
+		that->SetIndexY(this->GetIndexY() + mon.GetIndexY());
+		that->SetIndexZ(this->GetIndexZ() + mon.GetIndexZ());
+		return *that;
+	}
 
-	bool TMonom::operator==(const TMonom &tm) 
+	bool operator==(const TMonom &tm) 
 	{
 		return ((Coeff == tm.Coeff) && (XInd == tm.XInd) && (YInd == tm.YInd) && (ZInd == tm.ZInd));
 	}
