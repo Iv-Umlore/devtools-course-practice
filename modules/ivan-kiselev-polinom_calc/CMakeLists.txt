@@ -8,5 +8,5 @@ set(TESTS       "test_${MODULE}")
 include_directories("./")
 
 # Add all submodules
-add_subdirectory(src)
+add_subdirectory(include)
 add_subdirectory(test)
