@@ -4,7 +4,7 @@
 TPolinom::TPolinom(int monoms[][4], int km)
 {
 
-	PTMonom Monom = new TMonom(0, 0, 0, 0);
+	TMonom* Monom = new TMonom(0, 0, 0, 0);
 	pHead->SetDatValue(Monom);
 	for (int i = 0; i < km; i++)
 	{
@@ -16,7 +16,7 @@ TPolinom::TPolinom(int monoms[][4], int km)
 
 TPolinom::TPolinom(TPolinom & q)
 {
-	PTMonom Monom = new TMonom(0, 0, 0, 0);
+	TMonom* Monom = new TMonom(0, 0, 0, 0);
 	pHead->SetDatValue(Monom);
 	for (q.Reset(); !q.IsListEnded(); q.GoNext())
 	{
@@ -102,7 +102,8 @@ bool TPolinom::operator==(TPolinom &q)
 		return false;
 	else
 	{
-		PTMonom pMon, qMon;
+		TMonom* pMon;
+		TMonom* qMon;
 		Reset();
 		q.Reset();
 		while (!IsListEnded())

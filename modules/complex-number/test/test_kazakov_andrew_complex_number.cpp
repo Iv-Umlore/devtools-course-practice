@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Copyright 2017 Kazakov Andrew
 
 #include <gtest/gtest.h>
@@ -61,7 +60,6 @@ TEST(Kazakov_Andrew_ComplexNumberTest, Can_Multiply_Number_By_Itself) {
     ComplexNumber expected_z(-24.0, 70.0);
     EXPECT_EQ(zz, expected_z);
 }
-=======
 // Copyright 2017 Kazakov Andrew
 
 #include <gtest/gtest.h>
@@ -124,4 +122,3 @@ TEST(Kazakov_Andrew_ComplexNumberTest, Can_Multiply_Number_By_Itself) {
     ComplexNumber expected_z(-24.0, 70.0);
     EXPECT_EQ(zz, expected_z);
 }
->>>>>>> upstream/master

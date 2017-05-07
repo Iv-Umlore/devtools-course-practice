@@ -1,7 +1,7 @@
 // Copyright 2017 Ivan Kiselev
 
 #include "gtest.h"
-#include "../src/TPolinoms.h"
+#include "../include/TPolinoms.h"
 
 TEST(TRootLink, Set_Next_Link)
 {
@@ -77,50 +77,50 @@ TEST(TMonom, Not_equal)
 
 TEST(TMonom, EqualityExponent_1)
 {
-	PTMonom first = new TMonom(5, 1, 4, 3);
-	PTMonom second = new TMonom(7, 1, 4, 3);
+	TMonom* first = new TMonom(5, 1, 4, 3);
+	TMonom* second = new TMonom(7, 1, 4, 3);
 	EXPECT_TRUE(first->EqualityExponent(*second));
 }
 
 TEST(TMonom, EqualityExponent_2)
 {
-	PTMonom first = new TMonom(5, 1, 4, 3);
-	PTMonom second = new TMonom(7, 1, 3, 4);
+	TMonom* first = new TMonom(5, 1, 4, 3);
+	TMonom* second = new TMonom(7, 1, 3, 4);
 	EXPECT_FALSE(first->EqualityExponent(*second));
 }
 
 TEST(TMonom, Comparison_of_monomials_1)
 {
-	PTMonom first = new TMonom(5, 1, 4, 3);
-	PTMonom second = new TMonom(7, 1, 3, 4);
+	TMonom* first = new TMonom(5, 1, 4, 3);
+	TMonom* second = new TMonom(7, 1, 3, 4);
 	EXPECT_TRUE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_2)
 {
-	PTMonom first = new TMonom(5, 1, 4, 3);
-	PTMonom second = new TMonom(7, 1, 3, 4);
+	TMonom* first = new TMonom(5, 1, 4, 3);
+	TMonom* second = new TMonom(7, 1, 3, 4);
 	EXPECT_TRUE( *second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_3)
 {
-	PTMonom first = new TMonom(5, 1, 3, 4);
-	PTMonom second = new TMonom(7, 1, 3, 4);
+	TMonom* first = new TMonom(5, 1, 3, 4);
+	TMonom* second = new TMonom(7, 1, 3, 4);
 	EXPECT_FALSE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_4)
 {
-	PTMonom first = new TMonom(1, 0, 0, 1);
-	PTMonom second = new TMonom(5, 0, 0, 2);
+	TMonom* first = new TMonom(1, 0, 0, 1);
+	TMonom* second = new TMonom(5, 0, 0, 2);
 	EXPECT_FALSE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_5)
 {
-	PTMonom first = new TMonom(5, 1, 4, 3);
-	PTMonom second = new TMonom(7, 0, 6, 4);
+	TMonom* first = new TMonom(5, 1, 4, 3);
+	TMonom* second = new TMonom(7, 0, 6, 4);
 	EXPECT_FALSE(*first < *second);
 }
 
@@ -135,8 +135,9 @@ TEST(TMonom, multiplication_Monom)
 
 TEST(TPolinom, Auto_Equal)
 {
+	int size = 1;
 	int mon[][4] = { { 1, 0, 0, 3 }};
-	TPolinom old(mon , 1);
+	TPolinom old(mon , size);
 	EXPECT_TRUE(old == old);
 }
 

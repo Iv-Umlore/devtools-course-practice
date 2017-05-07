@@ -7,9 +7,8 @@
 #include "THeadRing.h"
 #include "TMonom.h"
 
-typedef TMonom* PTMonom;
-
-class TPolinom : public THeadRing {
+class TPolinom : public THeadRing
+{
 public:
 	TPolinom(int monoms[][4] = NULL, int km = 0);
 	 //km => количесво мономом, ну и дерьмо
@@ -18,7 +17,7 @@ public:
 
 	TPolinom (TPolinom &q);     // конструктор копирования
 	~TPolinom() {};
-	PTMonom  GetMonom() { return (PTMonom)GetDatValue(); }
+	TMonom*  GetMonom() { return (TMonom*)GetDatValue(); }
 
 	TPolinom& operator+(TPolinom &q); // сложение полиномов
 	TPolinom& operator-(TPolinom &q); // вычитание полиномов
