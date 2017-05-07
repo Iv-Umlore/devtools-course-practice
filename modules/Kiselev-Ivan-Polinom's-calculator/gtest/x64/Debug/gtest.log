@@ -1,3 +1,4 @@
 ﻿  other_tests.cpp
+d:\programs\kornyakov\devtools-course-practice\modules\kiselev-ivan-polinom's-calculator\lib\tpolinoms.h(130): warning C4172: возвращение адреса локальной или временной переменной : that
   gtest.vcxproj -> D:\PROGRAMS\Kornyakov\devtools-course-practice\modules\Kiselev-Ivan-Polinom's-calculator\lib\x64\Debug\gtest.exe
   gtest.vcxproj -> D:\PROGRAMS\Kornyakov\devtools-course-practice\modules\Kiselev-Ivan-Polinom's-calculator\lib\x64\Debug\gtest.pdb (Partial PDB)

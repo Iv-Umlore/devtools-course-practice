@@ -22,6 +22,7 @@ public:
 	TPolinom& operator+(TPolinom &q); // сложение полиномов
 	TPolinom& operator-(TPolinom &q); // вычитание полиномов
 	TPolinom& operator*(TPolinom &q); // умножение полиномов
+	TPolinom& operator*(int);	// умножение на число
 	TPolinom& operator=(TPolinom &q); // присваивание
 	bool operator==(TPolinom &q);				   //дополнительные функции
 
@@ -84,6 +85,17 @@ TPolinom & TPolinom::operator-(TPolinom & q)
 	return *this;
 }
 
+TPolinom & TPolinom::operator*(int mult)
+{
+	Reset();
+	while (!IsListEnded())
+	{
+		GetMonom()->SetCoeff(GetMonom()->Coeff * mult);
+		GoNext();
+	}
+	return *this;
+}
+
 /*TPolinom & TPolinom::operator*(TPolinom & q)
 {
 	TPolinom* old = new TPolinom(q);
@@ -101,14 +113,22 @@ TPolinom & TPolinom::operator-(TPolinom & q)
 
 TPolinom & TPolinom::operator=(TPolinom & q)
 {
-	for (q.Reset(); !q.IsListEnded(); q.GoNext())
+	if (IsEmpty())
 	{
-		InsLast(q.GetDatValue());
+		for (q.Reset(); !q.IsListEnded(); q.GoNext())
+		{
+			InsLast(q.GetDatValue());
+		}
+		pHead->SetNextLink(pFirst);
+		Reset();
+		q.Reset();
+		return *this;
 	}
-	pHead->SetNextLink(pFirst);
-	Reset();
-	q.Reset();
-	return *this;
+	else
+	{
+		TPolinom that(q);
+		return that;
+	}
 }
 
 bool TPolinom::operator==( TPolinom &q)
@@ -176,9 +196,14 @@ void TPolinom::SubMonom(TMonom * monom)
 		}
 		else
 		{
+			monom->Coeff = -monom->Coeff;
 			InsCurrent(monom->GetCopy());
 		}
-	else InsLast(monom->GetCopy());
+	else
+	{
+		monom->Coeff = -monom->Coeff;
+		InsLast(monom->GetCopy());
+	}
 }
 ostream& operator<<(ostream &os, TPolinom &q)
 {
@@ -186,7 +211,7 @@ ostream& operator<<(ostream &os, TPolinom &q)
 	for (q.Reset(); !q.IsListEnded(); q.GoNext())
 	{
 		old = q.GetMonom();
-		cout << old;
+		os << old;
 	}
 
 	return os;

@@ -234,7 +234,6 @@ TEST(TPolinom, can_subtract_Monom_1)
 	TPolinom Pol(Mon, Size);
 	TMonom monom(3, 0, 0, 4);
 	Pol.SubMonom(&monom);
-	cout << endl << endl << Pol << endl << endl;
 	TPolinom res(resMon, resSize);
 	EXPECT_TRUE(res == Pol);
 }
@@ -248,7 +247,6 @@ TEST(TPolinom, can_subtract_Monom_2)
 	TPolinom Pol(Mon, Size);
 	TMonom monom(3, 0, 0, 5);
 	Pol.SubMonom(&monom);
-	cout << endl << endl << Pol << endl << endl;
 	TPolinom res(resMon, resSize);
 	EXPECT_TRUE(res == Pol);
 }
@@ -370,7 +368,6 @@ TEST(TPolinom, can_add_up_many_polynoms_1)
 	int expected_mon[][4] = { { 10, 0, 0, 5 },{ 10, 0, 0, 4 },{ 2, 0, 0, 3 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 },{ 10, 0, 0, 0 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(Pol == expected_Pol);
 }
 
@@ -395,7 +392,6 @@ TEST(TPolinom, can_add_up_many_polynoms_2)
 	int expected_mon[][4] = { { 10, 0, 0, 5 },{ 10, 0, 0, 4 },{ 2, 0, 0, 3 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 },{ 10, 0, 0, 0 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(Pol == expected_Pol);
 }
 
@@ -420,19 +416,20 @@ TEST(TPolinom, can_add_up_many_polynoms_3)
 	int expected_mon[][4] = { { 10, 0, 0, 5 },{ 10, 0, 0, 4 },{ 2, 0, 0, 3 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 },{ 10, 0, 0, 0 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(Pol == expected_Pol);
 }
 
 TEST(TPolinom, can_subtract_simple_polinom)
 {
 	int size1 = 3;
+	int size2 = 1;
 	int res_size = 3;
 	int mon1[][4] = { { 9, 0, 0, 4 },{ 8, 0, 0, 3 },{ 5, 0, 0, 2 } };
 	int mon2[][4] = { { 7, 0, 0, 4 } };
 	int resmon[][4] = { { 2, 0, 0, 4 },{ 8, 0, 0, 3 },{ 5, 0, 0, 2 } };
 	TPolinom first(mon1, size1);
-	TPolinom second(mon2, size1);
+	TPolinom second(mon2, size2);
+	TPolinom third(mon1, size1);
 	TPolinom res(resmon, res_size);
 	first = first - second;
 	cout << endl << endl << first << endl << endl;

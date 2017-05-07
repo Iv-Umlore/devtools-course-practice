@@ -31,7 +31,7 @@ public:
 	PTDatValue GetDatValue(); // значение
 	virtual int IsEmpty()  const 
 	{ 
-		return pFirst == pStop; 
+		return pFirst == pLast; 
 	} // список пуст ?
 	int GetListLength()    const { return ListLen; }       // к-во звеньев
 	// навигация
@@ -152,12 +152,10 @@ void TDatList::InsCurrent(PTDatValue pVal)
 
 void TDatList::DelFirst(void)
 {
-	while (ListLen>0)
-	{
 	PTDatLink old = pFirst;
 	pFirst = pFirst->GetNextDatLink();
 	ListLen--;
-	}
+	old->~TDatLink();
 }    // удалить первое звено 
 
 void TDatList::DelCurrent(void)
