@@ -432,7 +432,6 @@ TEST(TPolinom, can_subtract_simple_polinom)
 	TPolinom third(mon1, size1);
 	TPolinom res(resmon, res_size);
 	first = first - second;
-	cout << endl << endl << first << endl << endl;
 	bool expect = (res == first);
 	EXPECT_TRUE(expect);
 }
@@ -449,45 +448,25 @@ TEST(TPolinom, can_subtract_polinom)
 	TPolinom second(mon2, size1);
 	TPolinom res(resmon, res_size);
 	first = first - second;
-	cout << endl << endl << first << endl << endl;
 	EXPECT_TRUE(res == first);
 
 }
 
-/*TEST(TPolinom, can_subtract_up_linear_polynoms)
-{
-	const int size = 1;
-	int mon1[][4] = { { 2, 0, 0, 1 } };
-	int mon2[][4] = { { 1, 0, 0, 1 } };
-	// 2z
-	TPolinom Pol1(mon1, size);
-	// z
-	TPolinom Pol2(mon2, size);
-
-	TPolinom Pol = Pol1 + Pol2;
-
-	const int expected_size = 1;
-	int expected_mon[][4] = { { 3, 0, 0, 1 } };
-	// 3z
-	TPolinom expected_Pol(expected_mon, expected_size);
-	EXPECT_TRUE(Pol == expected_Pol);
-}
-
-TEST(TPolinom, can_subtract_up_simple_polynoms_A_plus_B)
+TEST(TPolinom, can_subtract_up_simple_polynoms_A_minus_B)
 {
 	// Arrange
 	const int size1 = 3;
 	const int size2 = 4;
 	int mon1[][4] = { { 9, 0, 0, 4 } ,{ 8, 0, 0, 3 },{ 5, 0, 0, 2 } };
-	int mon2[][4] = { { 2, 0, 0, 5 },{ 1, 0, 0, 4 },{ -8, 0, 0, 3 },{ 1, 0, 0, 1 } };
+	int mon2[][4] = { { 2, 0, 0, 5 },{ 7, 0, 0, 4 },{ 8, 0, 0, 3 },{ 1, 0, 0, 1 } };
 	// 5z^2+8z^3+9z^4
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol1 + Pol2;			
+	TPolinom Pol = Pol1 - Pol2;			
 
 	const int expected_size = 4;
-	int expected_mon[][4] = { { 2, 0, 0, 5 },{ 10, 0, 0, 4 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 } };
+	int expected_mon[][4] = { { -2, 0, 0, 5 },{ 2, 0, 0, 4 },{ 5, 0, 0, 2 },{ -1, 0, 0, 1 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
 
@@ -500,15 +479,15 @@ TEST(TPolinom, can_subtract_up_simple_polynoms_B_plus_A)
 	const int size1 = 3;
 	const int size2 = 4;
 	int mon1[][4] = { { 9, 0, 0, 4 } ,{ 8, 0, 0, 3 },{ 5, 0, 0, 2 } };
-	int mon2[][4] = { { 2, 0, 0, 5 },{ 1, 0, 0, 4 },{ -8, 0, 0, 3 },{ 1, 0, 0, 1 } };
+	int mon2[][4] = { { 2, 0, 0, 5 },{ 7, 0, 0, 4 },{ 8, 0, 0, 3 },{ 1, 0, 0, 1 } };
 	// 5z^2+8z^3+9z^4
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol2 + Pol1;		
+	TPolinom Pol = Pol2 - Pol1;		
 
 	const int expected_size = 4;
-	int expected_mon[][4] = { { 2, 0, 0, 5 },{ 10, 0, 0, 4 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 } };
+	int expected_mon[][4] = { { 2, 0, 0, 5 },{ -2, 0, 0, 4 },{ -5, 0, 0, 2 },{ 1, 0, 0, 1 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
 
@@ -520,18 +499,18 @@ TEST(TPolinom, can_subtract_up_polynoms)
 	const int size1 = 5;
 	const int size2 = 4;
 	int mon1[][4] = { { 10, 9, 9, 9 },{ -21, 5, 0, 0 },{ 10, 4, 3, 2 },{ 8, 3, 2, 1 },{ 5, 2, 1, 3 } };
-	int mon2[][4] = { { 20, 7, 0, 2 },{ 1, 5, 0, 0 },{ -8, 3, 2, 1 },{ 15, 0 } };
+	int mon2[][4] = { { 20, 7, 0, 2 },{ 1, 5, 0, 0 },{ 8, 3, 2, 1 },{ 15, 0, 0, 0 } };
 	// 5x^2yz^3+8x^3y^2z+10x^4y^3z^2-21x^5+10x^9y^9z^9
 	TPolinom Pol1(mon1, size1);
 	// 15-8x^3y^2z+x^5+20x^7z^2
 	TPolinom Pol2(mon2, size2);
 
-	TPolinom Pol = Pol1 + Pol2;
+	TPolinom Pol = Pol1 - Pol2;
 
 	const int expected_size = 6;
-	int expected_mon[][4] = { { 10, 9 ,9 ,9 },{ 20, 7, 0, 2 },{ -20, 5, 0, 0 },{ 10, 4, 3, 2 },{ 5, 2, 1, 3 },{ 15, 0, 0, 0 } };
+	int expected_mon[][4] = { { 10, 9 ,9 ,9 },{ -20, 7, 0, 2 },{ -22, 5, 0, 0 },{ 10, 4, 3, 2 },{ 5, 2, 1, 3 },{ -15, 0, 0, 0 } };
 	// 15+5x^2yz^3+10x^4y^3z^2-20x^5+20x^7z^2+10x^9y^9z^9
 	TPolinom expected_Pol(expected_mon, expected_size);
 
 	EXPECT_TRUE(Pol == expected_Pol);
-}*/
+}
