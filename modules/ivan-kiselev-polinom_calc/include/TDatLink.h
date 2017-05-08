@@ -10,7 +10,7 @@ typedef TDatLink *PTDatLink;
 
 class TDatLink : public TRootLink {
 protected:
-	PTDatValue pValue;  // указатель на объект значения
+	PTDatValue pValue;  // Value
 public:
 	TDatLink(PTDatValue pVal = NULL, PTRootLink pN = NULL) :TRootLink(pN) 
 	{	

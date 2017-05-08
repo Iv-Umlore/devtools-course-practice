@@ -9,7 +9,7 @@ using namespace std;
 
 class TDatValue {
 public:
-	virtual TDatValue * GetCopy() = 0; // создание копии
+	virtual TDatValue * GetCopy() = 0; // copia
 	~TDatValue() {};
 };
 

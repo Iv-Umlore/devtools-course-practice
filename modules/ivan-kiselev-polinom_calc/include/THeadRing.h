@@ -5,17 +5,17 @@
 
 #include "TDatList.h"
 
-class THeadRing : public TDatList 
+class THeadRing : public TDatList
 {
 protected:
-	PTDatLink pHead;     // заголовок, pFirst - звено за pHead
+	PTDatLink pHead;
 public:
 	THeadRing();
 	~THeadRing();
-	// вставка звеньев
-	virtual void InsFirst(PTDatValue pVal = NULL); // после заголовка
-												   // удаление звеньев
-	virtual void DelFirst(void);                 // удалить первое звено
+
+	virtual void InsFirst(PTDatValue pVal = NULL);
+
+	virtual void DelFirst(void);
 };
 
 #endif

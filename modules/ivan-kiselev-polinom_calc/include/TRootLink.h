@@ -11,7 +11,7 @@ typedef TDatValue *PTDatValue;
 
 class TRootLink {
 protected:
-	PTRootLink  pNext;  // указатель на следующее звено
+	PTRootLink  pNext;  // next point
 public:
 	TRootLink(PTRootLink pN = NULL) 
 	{
