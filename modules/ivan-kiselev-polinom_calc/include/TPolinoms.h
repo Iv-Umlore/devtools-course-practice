@@ -3,7 +3,6 @@
 #ifndef _TPolinoms_
 #define _TPolinoms_
 
-
 #include "THeadRing.h"
 #include "TMonom.h"
 
@@ -11,8 +10,8 @@ class TPolinom : public THeadRing
 {
 public:
 	TPolinom(int monoms[][4] = NULL, int km = 0);
-	 //km => количесво мономом, ну и дерьмо
-	 // конструктор
+	 //km => kol-vo monomov
+	 // constructor
 	 // полинома из массива «коэффициент-индекс»
 
 	TPolinom (TPolinom &q);     // конструктор копирования

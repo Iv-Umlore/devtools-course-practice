@@ -4,7 +4,7 @@
 void TMonom::SetCoeff(int cval)
 {
 	Coeff = cval;
-}
+};
 
 int  TMonom::GetCoeff(void)
 {
@@ -49,7 +49,8 @@ TMonom& TMonom::operator=(const TMonom &tm)
 	ZInd = tm.ZInd;
 	return *this;
 }
-friend ostream& operator<<(ostream &os, TMonom * tm)
+
+ostream& operator<<(ostream &os, TMonom * tm)
 {
 	if (tm->Coeff > 0)
 		os << " + " << tm->Coeff;

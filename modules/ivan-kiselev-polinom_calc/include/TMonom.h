@@ -42,7 +42,6 @@ public:
 	friend ostream& operator<<(ostream &os, TMonom * tm);
 	friend class TPolinom;
 
-}
+};
 
 #endif
-

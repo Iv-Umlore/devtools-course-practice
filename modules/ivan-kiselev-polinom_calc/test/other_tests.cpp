@@ -1,7 +1,7 @@
 // Copyright 2017 Ivan Kiselev
 
 #include "gtest.h"
-#include "../include/TPolinoms.h"
+#include "include\TPolinoms.h"
 
 TEST(TRootLink, Set_Next_Link)
 {
@@ -136,8 +136,8 @@ TEST(TMonom, multiplication_Monom)
 TEST(TPolinom, Auto_Equal)
 {
 	int size = 1;
-	int mon[][4] = { { 1, 0, 0, 3 }};
-	TPolinom old(mon , size);
+	int mon[][4] = { { 1, 0, 0, 3 } };
+	TPolinom old(mon, size);
 	EXPECT_TRUE(old == old);
 }
 
