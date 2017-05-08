@@ -71,7 +71,6 @@ TEST(TMonom, Not_equal)
 {
 	TMonom first(10, 20);
 	TMonom second(10, 25);
-
 	EXPECT_TRUE(!(first == second));
 }
 
@@ -145,9 +144,7 @@ TEST(TPolinom, can_compare_the_polynoms)
 {
 	int size = 3;
 	int mon[][4] = { { 2, 1, 0, 0 }, { 2, 0, 0, 4 },{ 1, 0, 0, 3 } };
-	
 	TPolinom Pol1(mon, size);
-
 	TPolinom Pol2(mon, size);
 	bool res = (Pol1 == Pol2);
 	EXPECT_TRUE(res);
@@ -158,7 +155,6 @@ TEST(TPolinom, can_copy_polinoms)
 	const int size = 2;
 	int mon[][4] = { { 2, 0, 0, 4 } ,{ 5, 0, 0, 3 } };
 	TPolinom Pol1(mon, size);
-
 	TPolinom Pol2(Pol1);
 	EXPECT_TRUE(Pol1 == Pol2);
 }
@@ -169,9 +165,7 @@ TEST(TPolinom, can_assign_polynoms)
 	int mon[][4] = { { 2, 0, 0, 4 } ,{ 5, 0, 0, 3 } };
 	TPolinom Pol1(mon, size);
 	TPolinom Pol2;
-
 	Pol2 = Pol1;
-
 	EXPECT_TRUE(Pol1 == Pol2);
 }
 
@@ -179,9 +173,7 @@ TEST(TPolinom, can_assign_empty_polynom)
 {
 	TPolinom Pol1;
 	TPolinom Pol2;
-
 	Pol2 = Pol1;
-
 	EXPECT_TRUE(Pol1 == Pol2);
 }
 
@@ -286,9 +278,7 @@ TEST(TPolinom, can_add_up_linear_polynoms)
 	TPolinom Pol1(mon1, size);
 	// z
 	TPolinom Pol2(mon2, size);
-
 	TPolinom Pol = Pol1 + Pol2;
-
 	const int expected_size = 1;
 	int expected_mon[][4] = { { 3, 0, 0, 1 } };
 	// 3z
@@ -307,13 +297,11 @@ TEST(TPolinom, can_add_up_simple_polynoms_A_plus_B)
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol1 + Pol2;						// A + B
-
+	TPolinom Pol = Pol1 + Pol2;// A + B
 	const int expected_size = 4;
 	int expected_mon[][4] = { { 2, 0, 0, 5 },{ 10, 0, 0, 4 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(expected_Pol == Pol);
 }
 
@@ -328,13 +316,11 @@ TEST(TPolinom, can_add_up_simple_polynoms_B_plus_A)
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol2 + Pol1;					// B + A
-
+	TPolinom Pol = Pol2 + Pol1;// B + A
 	const int expected_size = 4;
 	int expected_mon[][4] = { { 2, 0, 0, 5 },{ 10, 0, 0, 4 },{ 5, 0, 0, 2 },{ 1, 0, 0, 1 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(expected_Pol == Pol);
 }
 
@@ -348,14 +334,11 @@ TEST(TPolinom, can_add_up_polynoms)
 	TPolinom Pol1(mon1, size1);
 	// 15-8x^3y^2z+x^5+20x^7z^2
 	TPolinom Pol2(mon2, size2);
-
 	TPolinom Pol = Pol1 + Pol2;
-
 	const int expected_size = 6;
 	int expected_mon[][4] = { { 10, 9 ,9 ,9 },{ 20, 7, 0, 2 },{ -20, 5, 0, 0 },{ 10, 4, 3, 2 },{ 5, 2, 1, 3 },{ 15, 0, 0, 0 } };
 	// 15+5x^2yz^3+10x^4y^3z^2-20x^5+20x^7z^2+10x^9y^9z^9
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(Pol == expected_Pol);
 }
 
@@ -474,13 +457,11 @@ TEST(TPolinom, can_subtract_up_simple_polynoms_A_minus_B)
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol1 - Pol2;			
-
+	TPolinom Pol = Pol1 - Pol2;
 	const int expected_size = 4;
 	int expected_mon[][4] = { { -2, 0, 0, 5 },{ 2, 0, 0, 4 },{ 5, 0, 0, 2 },{ -1, 0, 0, 1 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(expected_Pol == Pol);
 }
 
@@ -495,13 +476,11 @@ TEST(TPolinom, can_subtract_up_simple_polynoms_B_plus_A)
 	TPolinom Pol1(mon1, size1);
 	// z-8z^3+z^4+2z^5
 	TPolinom Pol2(mon2, size2);
-	TPolinom Pol = Pol2 - Pol1;		
-
+	TPolinom Pol = Pol2 - Pol1;
 	const int expected_size = 4;
 	int expected_mon[][4] = { { 2, 0, 0, 5 },{ -2, 0, 0, 4 },{ -5, 0, 0, 2 },{ 1, 0, 0, 1 } };
 	// z+5z^2+10z^4+2z^5
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(expected_Pol == Pol);
 }
 
@@ -515,14 +494,11 @@ TEST(TPolinom, can_subtract_up_polynoms)
 	TPolinom Pol1(mon1, size1);
 	// 15-8x^3y^2z+x^5+20x^7z^2
 	TPolinom Pol2(mon2, size2);
-
 	TPolinom Pol = Pol1 - Pol2;
-
 	const int expected_size = 6;
 	int expected_mon[][4] = { { 10, 9 ,9 ,9 },{ -20, 7, 0, 2 },{ -22, 5, 0, 0 },{ 10, 4, 3, 2 },{ 5, 2, 1, 3 },{ -15, 0, 0, 0 } };
 	// 15+5x^2yz^3+10x^4y^3z^2-20x^5+20x^7z^2+10x^9y^9z^9
 	TPolinom expected_Pol(expected_mon, expected_size);
-
 	EXPECT_TRUE(Pol == expected_Pol);
 }
 
@@ -559,7 +535,6 @@ TEST(TPolinom, multiplication_with_big_polinom_4x4)
 		{ 30, 6, 5, 5},{ 70, 5, 3, 8 },{ 120, 4, 6, 1 },{ 30, 4, 2, 0 }
 	};
 	TPolinom result(res_Mon, res_size);
-
 	EXPECT_TRUE(result == (first * second));
 
 }
