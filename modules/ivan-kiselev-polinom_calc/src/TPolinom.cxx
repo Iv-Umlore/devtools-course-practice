@@ -1,6 +1,5 @@
 #include "../include/TPolinoms.h"
 
-
 TPolinom::TPolinom(int monoms[][4], int km)
 {
 
