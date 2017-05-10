@@ -1,28 +1,22 @@
 //  Copyright 2017 Ivan Kiselev
 #ifndef MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_
 #define MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_
-#include "TRootLink.h"
-class TDatLink : public TRootLink {
+template <class CL>
+class TDatLink
+{
  protected:
-PTDatValue pValue;  //  Value
+CL* pValue;  //  Value
+CL Value;
+TDatLink<CL>* pNext;
  public:
-TDatLink(PTDatValue pVal = NULL, PTRootLink pN = NULL):TRootLink(pN) {
-pValue = pVal;
-}
-TDatLink(TDatLink &Link) : TRootLink(Link.pNext) {
-pValue = Link.GetDatValue();
-}
+TDatLink(CL value = nullptr,TDatLink<CL>* link = nullptr );
+TDatLink(TDatLink<CL> &Link);
 ~TDatLink() {}
-virtual void SetDatValue(PTDatValue pVal) {
-pValue = pVal;
-}
-virtual PTDatValue GetDatValue() {
-return pValue;
-}
-TDatLink* GetNextDatLink() {
-return reinterpret_cast<TDatLink*>(pNext);
-}
+void SetValue(CL value);
+CL* GetValue();
+//  Work with the pointer
+TDatLink<CL>* GetNextLink();
+void SetNextLink(TDatLink<CL> pLink);
 friend class TDatList;
 };
-typedef TDatLink *PTDatLink;
 #endif  //  MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_

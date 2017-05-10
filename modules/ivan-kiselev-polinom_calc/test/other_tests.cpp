@@ -1,35 +1,6 @@
 // Copyright 2017 Ivan Kiselev
 #include "../3rdparty/gtest/gtest.h"
 #include "../include/TPolinoms.h"
-TEST(TRootLink, Set_Next_Link) {
-TDatLink sec(NULL);
-PTDatLink pdv1 = &sec;
-TDatLink first(NULL);
-
-first.SetNextLink(pdv1);
-
-EXPECT_EQ(&sec, first.GetNextLink());
-}
-
-TEST(TRootLink, Get_Next_Link) {
-TDatLink sec(NULL);
-PTDatLink pdv1 = &sec;
-TDatLink first(NULL, pdv1);
-
-EXPECT_EQ(&sec, first.GetNextLink());
-}
-
-TEST(TRootLink, Ins_Next_Link) {
-TDatLink sec(NULL);
-PTDatLink pdv1 = &sec;
-TDatLink first(NULL, pdv1);
-TDatLink third(NULL);
-
-first.InsNextLink(&third);
-
-EXPECT_EQ(&third, first.GetNextLink());
-}
-
 
 TEST(TDatLink, create_DatLink) {
 TDatLink sec(NULL);
