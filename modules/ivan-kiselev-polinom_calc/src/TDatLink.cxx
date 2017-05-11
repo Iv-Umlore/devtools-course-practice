@@ -1,9 +1,9 @@
 //  Copyright 2017 Ivan Kiselev
 #include "../include/TDatLink.h"
 template <class CL>
-TDatLink<CL>::TDatLink(CL value, TDatLink<CL>* link) {
-	Value = value;
-	pValue = &Value;
+TDatLink<CL>::TDatLink(CL* pvalue, TDatLink<CL>* link) {
+	Value = *pvalue;
+	pValue = pvalue;
 	pNext = link;
 }
 template <class CL>
@@ -30,21 +30,25 @@ template <class CL>
 void TDatLink<CL>::SetNextLink(TDatLink<CL> pLink) {
 	pNext = pLink;
 }
+template <class CL>
+bool TDatLink<CL>::operator==(TDatLink<CL> Link) {
+	return (this->GetValue() == Link->GetValue());
+}
 /*class TDatLink : public TRootLink {
 protected:
-	PTDatValue pValue;  //  Value
+	PTMonom pValue;  //  Value
 public:
-	TDatLink(PTDatValue pVal = NULL, PTRootLink pN = NULL) :TRootLink(pN) {
+	TDatLink(PTMonom pVal = NULL, PTRootLink pN = NULL) :TRootLink(pN) {
 		pValue = pVal;
 	}
 	TDatLink(TDatLink &Link) : TRootLink(Link.pNext) {
-		pValue = Link.GetDatValue();
+		pValue = Link.GeTMonom();
 	}
 	~TDatLink() {}
-	virtual void SetDatValue(PTDatValue pVal) {
+	virtual void SetValue(PTMonom pVal) {
 		pValue = pVal;
 	}
-	virtual PTDatValue GetDatValue() {
+	virtual PTMonom GeTMonom() {
 		return pValue;
 	}
 	TDatLink* GetNextDatLink() {

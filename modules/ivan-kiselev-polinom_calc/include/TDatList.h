@@ -12,13 +12,13 @@ TDatLink<TMonom>* pPrevLink;
 TDatLink<TMonom>* pStop;
 int CurrPos;
 int ListLen;
-TDatLink<TMonom>* GetLink(TMonom pVal, TDatLink<TMonom>* pFirst);
+TDatLink<TMonom>* GetLink(TMonom pVal, TDatLink<TMonom>* pNext);
  public:
 TDatList();
 ~TDatList() {
 DelList();
 }
-TMonom* GetDatValue();
+TMonom* GeTMonom();
 virtual int IsEmpty() const {
 return pFirst == pLast;
 }

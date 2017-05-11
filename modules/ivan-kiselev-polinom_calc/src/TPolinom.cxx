@@ -2,7 +2,7 @@
 #include "../include/TPolinoms.h"
 TPolinom::TPolinom(int monoms[][4], int km) {
 TMonom* Monom = new TMonom(0, 0, 0, 0);
-pHead->SetDatValue(Monom);
+pHead->SetValue(*Monom);
 for (int i = 0; i < km; i++) {
 Monom = new TMonom(monoms[i][0], monoms[i][1], monoms[i][2], monoms[i][3]);
 InsLast(Monom);
@@ -12,11 +12,11 @@ Reset();
 
 TPolinom::TPolinom(TPolinom * q) {
 TMonom* Monom = new TMonom(0, 0, 0, 0);
-pHead->SetDatValue(Monom);
+pHead->SetValue(*Monom);
 for (q->Reset(); !q->IsListEnded(); q->GoNext()) {
-InsLast(q->GetDatValue());
+InsLast(q->GeTMonom());
 }
-pHead->SetNextLink(pFirst);
+pHead->SetNextLink(*pFirst);
 Reset();
 q->Reset();
 }
@@ -67,16 +67,16 @@ return *old;
 TPolinom & TPolinom::operator=(TPolinom q) {
 if (IsEmpty()) {
 for (q.Reset(); !q.IsListEnded(); q.GoNext()) {
-InsLast(q.GetDatValue());
+InsLast(q.GeTMonom());
 }
-pHead->SetNextLink(pFirst);
+pHead->SetNextLink(*pFirst);
 Reset();
 q.Reset();
 return *this;
 } else {
 TPolinom* that = new TPolinom(q);
 this->pFirst = that->pFirst;
-pHead->SetNextLink(pFirst);
+pHead->SetNextLink(*pFirst);
 return *this;
 }
 }

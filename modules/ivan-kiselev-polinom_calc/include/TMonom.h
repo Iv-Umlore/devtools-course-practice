@@ -1,9 +1,9 @@
 //  Copyright 2017 Ivan Kiselev
 #ifndef MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TMONOM_H_
 #define MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TMONOM_H_
-#include "TDatValue.h"
+#include "TMonom.h"
 #include <iostream>
-class TMonom : public TDatValue{
+class TMonom {
  protected:
 int Coeff;  //  monom's coeff
 int XInd;  //  index X
@@ -18,7 +18,7 @@ YInd = y;
 ZInd = z;
 }
 ~TMonom() {}
-virtual TDatValue * GetCopy();
+virtual TMonom * GetCopy();
 void SetCoeff(int cval);
 int  GetCoeff(void);
 void SetIndexX(int ival);

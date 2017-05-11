@@ -109,6 +109,6 @@ return true;
 return false;
 }
 
-TDatValue* TMonom::GetCopy() {
+TMonom* TMonom::GetCopy() {
 return new TMonom(Coeff, XInd, YInd, ZInd);
 }

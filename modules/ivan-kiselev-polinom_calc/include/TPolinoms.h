@@ -12,7 +12,7 @@ TPolinom(int monoms[][4] = NULL, int km = 0);
 TPolinom(TPolinom *q);  // constructor
 ~TPolinom() {}
 TMonom* GetMonom() {
-return dynamic_cast<TMonom*>(GetDatValue());
+return dynamic_cast<TMonom*>(GeTMonom());
 }
 TPolinom& operator+(TPolinom q);  //  Add Polinoms
 TPolinom& operator-(TPolinom q);  //  Sub Polinoms

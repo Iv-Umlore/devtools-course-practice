@@ -3,34 +3,28 @@
 #include "../include/TPolinoms.h"
 
 TEST(TDatLink, create_DatLink) {
-TDatLink sec(NULL);
+TDatLink<TMonom> sec(NULL);
 
-EXPECT_NO_FATAL_FAILURE(TDatLink first(NULL, &sec));
+EXPECT_NO_FATAL_FAILURE(TDatLink<TMonom> first(NULL, &sec));
 }
 
-TEST(TDatLink, Set_DatLalue) {
-PTDatValue pdv = NULL;
-TDatLink dl(NULL, NULL);
-
-EXPECT_NO_FATAL_FAILURE(dl.SetDatValue(pdv));
-}
 
 TEST(TDatLink, Get_DatValue) {
-PTDatValue pdv = NULL;
-TDatLink dl;
+TMonom* pdv = new TMonom(1, 0, 0, 0);
+TDatLink<TMonom> dl;
 
-dl.SetDatValue(pdv);
+dl.SetValue(*pdv);
 
-EXPECT_EQ(dl.GetDatValue(), pdv);
+EXPECT_TRUE(dl.GetValue() == pdv);
 }
 
 TEST(TDatLink, Get_Next_DatLink) {
-TDatLink dl1;
-TDatLink dl2;
+TDatLink<TMonom> dl1;
+TDatLink<TMonom> dl2;
 
-dl1.SetNextLink(&dl2);
+dl1.SetNextLink(dl2);
 
-EXPECT_EQ(&dl2, dl1.GetNextDatLink());
+EXPECT_TRUE(dl2 == *dl1.GetNextLink());
 }
 
 TEST(TMonom, Equal) {
@@ -169,7 +163,7 @@ first = first * second;
 EXPECT_TRUE(result == first);
 }
 
-TEST(THeadRing, Ins_First) {
+/*TEST(THeadRing, Ins_First) {
 int size = 1;
 int res_size = 2;
 int mon[][4] = { { 1, 0, 0, 3 } };
@@ -177,10 +171,10 @@ int resmon[][4] = { { 2, 1, 0, 0} , { 1, 0, 0, 3 } };
 TMonom Mon(2, 1, 0, 0);
 TPolinom old(mon, size);
 TPolinom res(resmon, res_size);
-old.InsFirst(dynamic_cast<PTDatValue>(&Mon));
+old.InsFirst(dynamic_cast<PTMonom>(&Mon));
 
 EXPECT_TRUE(old == res);
-}
+}*/
 
 TEST(THeadRing, Del_First) {
 int size = 2;
