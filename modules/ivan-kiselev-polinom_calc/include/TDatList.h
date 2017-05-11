@@ -5,20 +5,20 @@
 #include "TMonom.h"
 class TDatList{
  protected:
-TDatLink<TMonom>* pFirst;
-TDatLink<TMonom>* pLast;
-TDatLink<TMonom>* pCurrLink;
-TDatLink<TMonom>* pPrevLink;
-TDatLink<TMonom>* pStop;
+TDatLink pFirst;
+TDatLink* pLast;
+TDatLink* pCurrLink;
+TDatLink* pPrevLink;
+TDatLink* pStop;
 int CurrPos;
 int ListLen;
-TDatLink<TMonom>* GetLink(TMonom pVal, TDatLink<TMonom>* pNext);
+TDatLink* GetLink(TMonom pVal, TDatLink* pNext);
  public:
 TDatList();
 ~TDatList() {
 DelList();
 }
-TMonom* GeTMonom();
+TMonom GeTMonom();
 virtual int IsEmpty() const {
 return pFirst == pLast;
 }

@@ -3,15 +3,15 @@
 #include "../include/TPolinoms.h"
 
 TEST(TDatLink, create_DatLink) {
-TDatLink<TMonom> sec(NULL);
+TDatLink sec(NULL);
 
-EXPECT_NO_FATAL_FAILURE(TDatLink<TMonom> first(NULL, &sec));
+EXPECT_NO_FATAL_FAILURE(TDatLink first(NULL, &sec));
 }
 
 
 TEST(TDatLink, Get_DatValue) {
 TMonom* pdv = new TMonom(1, 0, 0, 0);
-TDatLink<TMonom> dl;
+TDatLink dl;
 
 dl.SetValue(*pdv);
 
@@ -19,8 +19,8 @@ EXPECT_TRUE(dl.GetValue() == pdv);
 }
 
 TEST(TDatLink, Get_Next_DatLink) {
-TDatLink<TMonom> dl1;
-TDatLink<TMonom> dl2;
+TDatLink dl1;
+TDatLink dl2;
 
 dl1.SetNextLink(dl2);
 

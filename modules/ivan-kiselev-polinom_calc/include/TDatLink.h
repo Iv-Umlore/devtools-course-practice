@@ -1,23 +1,22 @@
 //  Copyright 2017 Ivan Kiselev
 #ifndef MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_
 #define MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_
-template <class CL>
+#include "TMonom.h"
 class TDatLink
 {
  protected:
-CL* pValue;  //  Value
-CL Value;
-TDatLink<CL>* pNext;
+TMonom Value;
+TDatLink* pNext;
  public:
-TDatLink(CL* value = nullptr,TDatLink<CL>* link = nullptr );
-TDatLink(TDatLink<CL> &Link);
+TDatLink(TMonom* mon = new TMonom(0,0,0,0) ,TDatLink* link = nullptr );
+TDatLink(TDatLink &Link);
 ~TDatLink();
-void SetValue(CL value);
-CL* GetValue();
+void SetValue(TMonom value);
+TMonom GetValue();
 //  Work with the pointer
-TDatLink<CL>* GetNextLink();
-void SetNextLink(TDatLink<CL> pLink);
-bool operator==(TDatLink<CL> Link);
+TDatLink* GetNextLink();
+void SetNextLink(TDatLink* pLink);
+bool operator==(TDatLink* Link);
 friend class TDatList;
 };
 #endif  //  MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_

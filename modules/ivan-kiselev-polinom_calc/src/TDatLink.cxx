@@ -1,37 +1,28 @@
 //  Copyright 2017 Ivan Kiselev
 #include "../include/TDatLink.h"
-template <class CL>
-TDatLink<CL>::TDatLink(CL* pvalue, TDatLink<CL>* link) {
-	Value = *pvalue;
-	pValue = pvalue;
+TDatLink::TDatLink(TMonom* mon, TDatLink* link) {
+	Value = *mon;
 	pNext = link;
 }
-template <class CL>
-TDatLink<CL>::TDatLink(TDatLink<CL> &Link) {
+TDatLink::TDatLink(TDatLink &Link) {
 	pNext = Link.pNext;
 	Value = Link.Value;
 }
-template <class CL>
-TDatLink<CL>::~TDatLink() {}
-template <class CL>
-void TDatLink<CL>::SetValue(CL value) {
+TDatLink::~TDatLink() {}
+void TDatLink::SetValue(TMonom value) {
 	Value = value;
 }
-template <class CL>
-CL* TDatLink<CL>::GetValue() {
+TMonom TDatLink::GetValue() {
 	return Value;
 }
 //  Work with the pointer
-template <class CL>
-TDatLink<CL>* TDatLink<CL>::GetNextLink() {
+TDatLink* TDatLink::GetNextLink() {
 	return pNext;
 }
-template <class CL>
-void TDatLink<CL>::SetNextLink(TDatLink<CL> pLink) {
+void TDatLink::SetNextLink(TDatLink *pLink) {
 	pNext = pLink;
 }
-template <class CL>
-bool TDatLink<CL>::operator==(TDatLink<CL> Link) {
+bool TDatLink::operator==(TDatLink *Link) {
 	return (this->GetValue() == Link->GetValue());
 }
 /*class TDatLink : public TRootLink {

@@ -1,16 +1,16 @@
 //  Copyright 2017 Ivan Kiselev
 #include "../include/TDatList.h"
-TMonom* TDatList::GeTMonom() {
-return pCurrLink->pValue;
+TMonom TDatList::GeTMonom() {
+return pCurrLink->GetValue();
 }
 
-TDatLink<TMonom>* TDatList::GetLink(TMonom pVal, TDatLink<TMonom>* pNext) {
-	TDatLink<TMonom>* that = new TDatLink<TMonom>(&pVal, pNext);
+TDatLink TDatList::GetLink(TMonom pVal, TDatLink* pNext) {
+	TDatLink* that = new TDatLink(&pVal, pNext);
 	return that;
 }
 
 TDatList::TDatList() {
-pFirst = new TDatLink<TMonom>(NULL, NULL);
+pFirst = new TDatLink(NULL, NULL);
 pLast = pFirst;
 pCurrLink = pFirst;
 pPrevLink = NULL;
@@ -64,7 +64,7 @@ InsFirst(pVal);
 }
 
 void TDatList::DelFirst(void) {
-TDatLink<TMonom>* old = pFirst;
+TDatLink* old = pFirst;
 pFirst = pFirst->GetNextLink();
 ListLen--;
 old->~TDatLink();
@@ -74,7 +74,7 @@ void TDatList::DelCurrent(void) {
 if (pCurrLink == pFirst) {
 DelFirst();
 } else {
-TDatLink<TMonom>* old = pCurrLink;
+TDatLink* old = pCurrLink;
 pPrevLink->SetNextLink(*pCurrLink->GetNextLink());
 pCurrLink = pCurrLink->GetNextLink();
 old->~TDatLink();

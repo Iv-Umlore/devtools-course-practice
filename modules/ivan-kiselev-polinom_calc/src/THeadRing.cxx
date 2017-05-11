@@ -1,7 +1,7 @@
 //  Copyright 2017 Ivan Kiselev
 #include "../include/THeadRing.h"
 THeadRing::THeadRing() {
-pHead = new TDatLink<TMonom>();
+pHead = new TDatLink();
 pHead->SetNextLink(*pFirst);
 pStop = pHead;
 pLast->SetNextLink(*pHead);

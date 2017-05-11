@@ -5,7 +5,7 @@
 #include "TDatList.h"
 class THeadRing : public TDatList{
  protected:
-TDatLink<TMonom>* pHead;
+TDatLink* pHead;
  public:
 THeadRing();
 ~THeadRing() {}
