@@ -2,25 +2,23 @@
 #ifndef MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLIST_H_
 #define MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLIST_H_
 #include "TDatLink.h"
+#include "TMonom.h"
 class TDatList{
  protected:
-PTDatLink pFirst;
-PTDatLink pLast;
-PTDatLink pCurrLink;
-PTDatLink pPrevLink;
-PTDatLink pStop;
+TDatLink* pFirst;
+TDatLink* pLast;
+TDatLink* pCurrLink;
+TDatLink* pPrevLink;
+TDatLink* pStop;
 int CurrPos;
 int ListLen;
-PTDatLink GetLink(PTDatValue pVal = NULL, PTDatLink pLink = NULL) {
-return new TDatLink(pVal, pLink);
-}
-
+TDatLink* GetLink(TMonom &pVal, TDatLink* pNext);
  public:
 TDatList();
 ~TDatList() {
 DelList();
 }
-PTDatValue GetDatValue();
+TMonom* GeTMonom();
 virtual int IsEmpty() const {
 return pFirst == pLast;
 }
@@ -30,9 +28,9 @@ return ListLen;
 virtual void Reset(void);
 virtual bool IsListEnded(void) const;
 int GoNext(void);
-virtual void InsFirst(PTDatValue pVal = NULL);
-virtual void InsLast(PTDatValue pVal = NULL);
-virtual void InsCurrent(PTDatValue pVal = NULL);
+virtual void InsFirst(TMonom* pVal = NULL);
+virtual void InsLast(TMonom* pVal = NULL);
+virtual void InsCurrent(TMonom* pVal = NULL);
 virtual void DelFirst(void);
 virtual void DelCurrent(void);
 virtual void DelList(void);

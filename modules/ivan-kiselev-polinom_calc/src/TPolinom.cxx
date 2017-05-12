@@ -2,7 +2,6 @@
 #include "../include/TPolinoms.h"
 TPolinom::TPolinom(int monoms[][4], int km) {
 TMonom* Monom = new TMonom(0, 0, 0, 0);
-pHead->SetDatValue(Monom);
 for (int i = 0; i < km; i++) {
 Monom = new TMonom(monoms[i][0], monoms[i][1], monoms[i][2], monoms[i][3]);
 InsLast(Monom);
@@ -12,16 +11,15 @@ Reset();
 
 TPolinom::TPolinom(TPolinom * q) {
 TMonom* Monom = new TMonom(0, 0, 0, 0);
-pHead->SetDatValue(Monom);
 for (q->Reset(); !q->IsListEnded(); q->GoNext()) {
-InsLast(q->GetDatValue());
+InsLast(q->GeTMonom());
 }
-pHead->SetNextLink(pFirst);
+SetHeadPoint(*pFirst);
 Reset();
 q->Reset();
 }
 
-TPolinom & TPolinom::operator+(TPolinom q) {
+TPolinom & TPolinom::operator+(TPolinom &q) {
 TPolinom* old = new TPolinom(q);
 Reset();
 while (!IsListEnded()) {
@@ -34,7 +32,7 @@ old->Reset();
 return *old;
 }
 
-TPolinom & TPolinom::operator-(TPolinom q) {
+TPolinom & TPolinom::operator-(TPolinom &q) {
 Reset();
 while (!q.IsListEnded()) {
 SubMonom(q.GetMonom());
@@ -54,7 +52,7 @@ GoNext();
 return *this;
 }
 
-TPolinom & TPolinom::operator*(TPolinom q) {
+TPolinom & TPolinom::operator*(TPolinom &q) {
 TPolinom* old = new TPolinom();
 for (Reset(); !IsListEnded(); GoNext())
 for (q.Reset(); !q.IsListEnded(); q.GoNext()) {
@@ -64,24 +62,24 @@ old->AddMonom(result);
 return *old;
 }
 
-TPolinom & TPolinom::operator=(TPolinom q) {
+TPolinom & TPolinom::operator=(TPolinom &q) {
 if (IsEmpty()) {
 for (q.Reset(); !q.IsListEnded(); q.GoNext()) {
-InsLast(q.GetDatValue());
+InsLast(q.GeTMonom());
 }
-pHead->SetNextLink(pFirst);
+SetHeadPoint(*pFirst);
 Reset();
 q.Reset();
 return *this;
 } else {
 TPolinom* that = new TPolinom(q);
 this->pFirst = that->pFirst;
-pHead->SetNextLink(pFirst);
+SetHeadPoint(*pFirst);
 return *this;
 }
 }
 
-bool TPolinom::operator==(TPolinom q) {
+bool TPolinom::operator==(TPolinom &q) {
 if (pFirst == q.pFirst) return true;
 if (this->ListLen != q.ListLen) {
 return false;
@@ -116,9 +114,9 @@ GetMonom()->SetCoeff(monom->GetCoeff() + GetMonom()->GetCoeff());
 if (GetMonom()->GetCoeff() == 0)
 DelCurrent();
 } else {
-InsCurrent(monom->GetCopy());
+InsCurrent(monom);
 } else {
-InsLast(monom->GetCopy());
+InsLast(monom);
 }
 Reset();
 }
@@ -136,10 +134,10 @@ if (GetMonom()->GetCoeff() == 0)
 DelCurrent();
 } else {
 monom->Coeff = -monom->Coeff;
-InsCurrent(monom->GetCopy());
+InsCurrent(monom);
 } else {
 monom->Coeff = -monom->Coeff;
-InsLast(monom->GetCopy());
+InsLast(monom);
 }
 }
 
@@ -150,4 +148,8 @@ old = q.GetMonom();
 os << old;
 }
 return os;
+}
+
+TMonom* TPolinom::GetMonom() const {//гдеяэ
+return pCurrLink->GetLinkMonom();
 }

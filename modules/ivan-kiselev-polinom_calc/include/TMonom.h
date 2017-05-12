@@ -1,9 +1,9 @@
 //  Copyright 2017 Ivan Kiselev
 #ifndef MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TMONOM_H_
 #define MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TMONOM_H_
-#include "TDatValue.h"
+#include "TMonom.h"
 #include <iostream>
-class TMonom : public TDatValue{
+class TMonom {
  protected:
 int Coeff;  //  monom's coeff
 int XInd;  //  index X
@@ -18,21 +18,20 @@ YInd = y;
 ZInd = z;
 }
 ~TMonom() {}
-virtual TDatValue * GetCopy();
 void SetCoeff(int cval);
-int  GetCoeff(void);
+int  GetCoeff(void) const;
 void SetIndexX(int ival);
 void SetIndexY(int ival);
 void SetIndexZ(int ival);
-int GetIndexX(void);
-int GetIndexY(void);
-int GetIndexZ(void);
+int GetIndexX(void) const;
+int GetIndexY(void) const;
+int GetIndexZ(void) const;
 TMonom& operator=(const TMonom &tm);
-TMonom operator*(TMonom mon);
-bool operator==(const TMonom &tm);
-bool EqualityExponent(TMonom tm);
-bool operator<(TMonom tm);  //  prioritet x > y > z
-bool operator>(TMonom tm);  //  prioritet x > y > z
+TMonom operator*(const TMonom &mon);
+bool operator==(const TMonom &tm) const;
+bool EqualityExponent(const TMonom &tm) const;
+bool operator<(const TMonom &tm) const;  //  prioritet x > y > z
+bool operator>(const TMonom &tm) const;  //  prioritet x > y > z
 friend std::ostream& operator<<(std::ostream &os, TMonom * tm);
 friend class TPolinom;
 };

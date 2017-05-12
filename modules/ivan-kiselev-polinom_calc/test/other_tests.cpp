@@ -1,67 +1,8 @@
 // Copyright 2017 Ivan Kiselev
 #include "../3rdparty/gtest/gtest.h"
 #include "../include/TPolinoms.h"
-TEST(TRootLink, Set_Next_Link) {
-TDatLink sec(NULL);
-PTDatLink pdv1 = &sec;
-TDatLink first(NULL);
-
-first.SetNextLink(pdv1);
-
-EXPECT_EQ(&sec, first.GetNextLink());
-}
-
-TEST(TRootLink, Get_Next_Link) {
-TDatLink sec(NULL);
-PTDatLink pdv1 = &sec;
-TDatLink first(NULL, pdv1);
-
-EXPECT_EQ(&sec, first.GetNextLink());
-}
-
-TEST(TRootLink, Ins_Next_Link) {
-TDatLink sec(NULL);
-PTDatLink pdv1 = &sec;
-TDatLink first(NULL, pdv1);
-TDatLink third(NULL);
-
-first.InsNextLink(&third);
-
-EXPECT_EQ(&third, first.GetNextLink());
-}
-
-
-TEST(TDatLink, create_DatLink) {
-TDatLink sec(NULL);
-
-EXPECT_NO_FATAL_FAILURE(TDatLink first(NULL, &sec));
-}
-
-TEST(TDatLink, Set_DatLalue) {
-PTDatValue pdv = NULL;
-TDatLink dl(NULL, NULL);
-
-EXPECT_NO_FATAL_FAILURE(dl.SetDatValue(pdv));
-}
-
-TEST(TDatLink, Get_DatValue) {
-PTDatValue pdv = NULL;
-TDatLink dl;
-
-dl.SetDatValue(pdv);
-
-EXPECT_EQ(dl.GetDatValue(), pdv);
-}
-
-TEST(TDatLink, Get_Next_DatLink) {
-TDatLink dl1;
-TDatLink dl2;
-
-dl1.SetNextLink(&dl2);
-
-EXPECT_EQ(&dl2, dl1.GetNextDatLink());
-}
-
+#include <iostream>
+using namespace std;
 TEST(TMonom, Equal) {
 TMonom first(10, 20);
 TMonom second(10, 20);
@@ -198,6 +139,26 @@ first = first * second;
 EXPECT_TRUE(result == first);
 }
 
+TEST(TDatLink, Get_DatValue) {
+TMonom* pdv = new TMonom(1, 0, 0, 0);
+TDatLink dl;
+
+dl.SetValue(*pdv);
+
+EXPECT_TRUE(dl.GetValue() == *pdv);
+}
+
+TEST(TDatLink, Get_Next_DatLink) {
+TDatLink dl1;
+TDatLink dl2;
+
+dl1.SetNextLink(&dl2);
+
+EXPECT_TRUE(&dl2 == dl1.GetNextLink());
+}
+
+
+
 TEST(THeadRing, Ins_First) {
 int size = 1;
 int res_size = 2;
@@ -206,7 +167,7 @@ int resmon[][4] = { { 2, 1, 0, 0} , { 1, 0, 0, 3 } };
 TMonom Mon(2, 1, 0, 0);
 TPolinom old(mon, size);
 TPolinom res(resmon, res_size);
-old.InsFirst(dynamic_cast<PTDatValue>(&Mon));
+old.InsFirst(&Mon);
 
 EXPECT_TRUE(old == res);
 }
