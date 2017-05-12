@@ -18,7 +18,6 @@ YInd = y;
 ZInd = z;
 }
 ~TMonom() {}
-virtual TMonom * GetCopy();
 void SetCoeff(int cval);
 int  GetCoeff(void) const;
 void SetIndexX(int ival);

@@ -12,7 +12,7 @@ TDatLink* pPrevLink;
 TDatLink* pStop;
 int CurrPos;
 int ListLen;
-TDatLink* GetLink(TMonom pVal, TDatLink* pNext);
+TDatLink* GetLink(TMonom &pVal, TDatLink* pNext);
  public:
 TDatList();
 ~TDatList() {

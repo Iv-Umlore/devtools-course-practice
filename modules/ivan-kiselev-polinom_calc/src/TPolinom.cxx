@@ -116,9 +116,9 @@ GetMonom()->SetCoeff(monom->GetCoeff() + GetMonom()->GetCoeff());
 if (GetMonom()->GetCoeff() == 0)
 DelCurrent();
 } else {
-InsCurrent(monom->GetCopy());
+InsCurrent(monom);
 } else {
-InsLast(monom->GetCopy());
+InsLast(monom);
 }
 Reset();
 }
@@ -136,10 +136,10 @@ if (GetMonom()->GetCoeff() == 0)
 DelCurrent();
 } else {
 monom->Coeff = -monom->Coeff;
-InsCurrent(monom->GetCopy());
+InsCurrent(monom);
 } else {
 monom->Coeff = -monom->Coeff;
-InsLast(monom->GetCopy());
+InsLast(monom);
 }
 }
 
@@ -150,4 +150,8 @@ old = q.GetMonom();
 os << old;
 }
 return os;
+}
+
+TMonom* TPolinom::GetMonom() const {		//гдеяэ
+	return pCurrLink->GetLinkMonom();
 }

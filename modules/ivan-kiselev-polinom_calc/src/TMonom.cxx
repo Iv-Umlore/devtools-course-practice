@@ -108,7 +108,3 @@ else if (ZInd > tm.ZInd)
 return true;
 return false;
 }
-
-TMonom* TMonom::GetCopy() {
-return new TMonom(Coeff, XInd, YInd, ZInd);
-}

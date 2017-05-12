@@ -11,9 +11,7 @@ TPolinom(int monoms[][4] = NULL, int km = 0);
 //  Check ReadMe
 TPolinom(TPolinom *q);  // constructor
 ~TPolinom() {}
-TMonom* GetMonom() const {		//гдеяэ
-return pCurrLink->GetLinkMonom();
-}
+TMonom* GetMonom() const;
 TPolinom& operator+(TPolinom q);  //  Add Polinoms
 TPolinom& operator-(TPolinom q);  //  Sub Polinoms
 TPolinom& operator*(TPolinom q);  //  Mult Polinoms

@@ -4,7 +4,7 @@ TMonom* TDatList::GeTMonom() {
 return &pCurrLink->GetValue();
 }
 
-TDatLink* TDatList::GetLink(TMonom pVal, TDatLink* pNext) {
+TDatLink* TDatList::GetLink(TMonom &pVal, TDatLink* pNext) {
 	TDatLink* that = new TDatLink(&pVal, pNext);
 	return that;
 }
