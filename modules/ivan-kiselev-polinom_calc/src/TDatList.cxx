@@ -1,7 +1,7 @@
 //  Copyright 2017 Ivan Kiselev
 #include "../include/TDatList.h"
 TMonom* TDatList::GeTMonom() {
-return &pCurrLink->GetValue();
+return pCurrLink->GetLinkMonom();
 }
 
 TDatLink* TDatList::GetLink(TMonom &pVal, TDatLink* pNext) {

@@ -1,6 +1,8 @@
 // Copyright 2017 Ivan Kiselev
 #include "../3rdparty/gtest/gtest.h"
 #include "../include/TPolinoms.h"
+#include <iostream>
+using namespace std;
 TEST(TMonom, Equal) {
 	TMonom first(10, 20);
 	TMonom second(10, 20);
