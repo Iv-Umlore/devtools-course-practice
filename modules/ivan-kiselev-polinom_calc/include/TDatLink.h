@@ -2,15 +2,14 @@
 #ifndef MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_
 #define MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_
 #include "TMonom.h"
-class TDatLink
-{
+class TDatLink {
  protected:
 TMonom Value;
 TMonom* that;
 TDatLink* pNext;
  public:
-TDatLink(TMonom* mon = new TMonom(0, 0, 0, 0) ,TDatLink* link = nullptr );
-TDatLink(TDatLink &Link);
+TDatLink(TMonom* mon = new TMonom(0, 0, 0, 0) , TDatLink* link = nullptr );
+TDatLink(const TDatLink &Link);
 ~TDatLink();
 void SetValue(TMonom value);
 TMonom GetValue();

@@ -4,11 +4,12 @@
 #define MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_THEADRING_H_
 #include "TDatList.h"
 class THeadRing : public TDatList{
- protected:
+ private:
 TDatLink* pHead;
  public:
 THeadRing();
 ~THeadRing() {}
+void SetHeadPoint(TDatLink &link);
 virtual void InsFirst(TMonom* pVal = NULL);
 virtual void DelFirst(void);
 };

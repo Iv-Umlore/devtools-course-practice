@@ -1,13 +1,12 @@
 //  Copyright 2017 Ivan Kiselev
 #include "../include/TDatLink.h"
-TDatLink::TDatLink(TMonom* mon, TDatLink* link) {
-Value = *mon;
+TDatLink::TDatLink(TMonom* mon, TDatLink* link) : Value(*mon) {
 that = mon;
 pNext = link;
 }
-TDatLink::TDatLink(TDatLink &Link) {
+TDatLink::TDatLink(const TDatLink &Link) : Value(Link.Value) {
 pNext = Link.pNext;
-Value = Link.Value;
+that = &Value;
 }
 TDatLink::~TDatLink() {}
 void TDatLink::SetValue(TMonom value) {
