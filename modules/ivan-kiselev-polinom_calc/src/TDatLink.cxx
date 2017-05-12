@@ -2,6 +2,7 @@
 #include "../include/TDatLink.h"
 TDatLink::TDatLink(TMonom* mon, TDatLink* link) {
 	Value = *mon;
+	that = mon;
 	pNext = link;
 }
 TDatLink::TDatLink(TDatLink &Link) {
@@ -25,28 +26,6 @@ void TDatLink::SetNextLink(TDatLink *pLink) {
 bool TDatLink::operator==(TDatLink *Link) {
 	return (this->GetValue() == Link->GetValue());
 }
-/*class TDatLink : public TRootLink {
-protected:
-	PTMonom pValue;  //  Value
-public:
-	TDatLink(PTMonom pVal = NULL, PTRootLink pN = NULL) :TRootLink(pN) {
-		pValue = pVal;
-	}
-	TDatLink(TDatLink &Link) : TRootLink(Link.pNext) {
-		pValue = Link.GeTMonom();
-	}
-	~TDatLink() {}
-	virtual void SetValue(PTMonom pVal) {
-		pValue = pVal;
-	}
-	virtual PTMonom GeTMonom() {
-		return pValue;
-	}
-	TDatLink* GetNextDatLink() {
-		return reinterpret_cast<TDatLink*>(pNext);
-	}
-	friend class TDatList;
-};
-typedef TDatLink *TDatLink<CL>;
-#endif  //  MODULES_IVAN_KISELEV_POLINOM_CALC_INCLUDE_TDATLINK_H_
-*/
+TMonom* TDatLink::GetLinkMonom() {
+	return that;
+}

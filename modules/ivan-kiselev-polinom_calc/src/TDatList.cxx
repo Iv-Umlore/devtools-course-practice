@@ -1,16 +1,16 @@
 //  Copyright 2017 Ivan Kiselev
 #include "../include/TDatList.h"
-TMonom TDatList::GeTMonom() {
-return pCurrLink->GetValue();
+TMonom* TDatList::GeTMonom() {
+return &pCurrLink->GetValue();
 }
 
-TDatLink TDatList::GetLink(TMonom pVal, TDatLink* pNext) {
+TDatLink* TDatList::GetLink(TMonom pVal, TDatLink* pNext) {
 	TDatLink* that = new TDatLink(&pVal, pNext);
 	return that;
 }
 
 TDatList::TDatList() {
-pFirst = new TDatLink(NULL, NULL);
+pFirst = new TDatLink();
 pLast = pFirst;
 pCurrLink = pFirst;
 pPrevLink = NULL;
@@ -43,11 +43,12 @@ ListLen++;
 }
 
 void TDatList::InsLast(TMonom* pVal) {
-if (pFirst->pValue == NULL) {
+TMonom zero(0, 0, 0, 0);
+if (pFirst->GetValue() == zero) {
 InsFirst(pVal);
 } else {
 while (GoNext() != 1) {}
-pPrevLink->SetNextLink(*GetLink(*pVal, pLast));
+pPrevLink->SetNextLink(GetLink(*pVal, pLast));
 pCurrLink = pPrevLink->GetNextLink();
 ListLen++;
 }
@@ -55,7 +56,7 @@ ListLen++;
 
 void TDatList::InsCurrent(TMonom* pVal) {
 if (pPrevLink != NULL) {
-pPrevLink->SetNextLink(*GetLink(*pVal, pCurrLink));
+pPrevLink->SetNextLink(GetLink(*pVal, pCurrLink));
 pCurrLink = pPrevLink->GetNextLink();
 ListLen++;
 } else {
@@ -75,7 +76,7 @@ if (pCurrLink == pFirst) {
 DelFirst();
 } else {
 TDatLink* old = pCurrLink;
-pPrevLink->SetNextLink(*pCurrLink->GetNextLink());
+pPrevLink->SetNextLink(pCurrLink->GetNextLink());
 pCurrLink = pCurrLink->GetNextLink();
 old->~TDatLink();
 ListLen--;

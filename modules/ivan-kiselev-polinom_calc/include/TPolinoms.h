@@ -11,8 +11,8 @@ TPolinom(int monoms[][4] = NULL, int km = 0);
 //  Check ReadMe
 TPolinom(TPolinom *q);  // constructor
 ~TPolinom() {}
-TMonom* GetMonom() {
-return dynamic_cast<TMonom*>(GeTMonom());
+TMonom* GetMonom() const {		//гдеяэ
+return pCurrLink->GetLinkMonom();
 }
 TPolinom& operator+(TPolinom q);  //  Add Polinoms
 TPolinom& operator-(TPolinom q);  //  Sub Polinoms

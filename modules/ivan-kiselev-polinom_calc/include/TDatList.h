@@ -5,7 +5,7 @@
 #include "TMonom.h"
 class TDatList{
  protected:
-TDatLink pFirst;
+TDatLink* pFirst;
 TDatLink* pLast;
 TDatLink* pCurrLink;
 TDatLink* pPrevLink;
@@ -18,7 +18,7 @@ TDatList();
 ~TDatList() {
 DelList();
 }
-TMonom GeTMonom();
+TMonom* GeTMonom();
 virtual int IsEmpty() const {
 return pFirst == pLast;
 }

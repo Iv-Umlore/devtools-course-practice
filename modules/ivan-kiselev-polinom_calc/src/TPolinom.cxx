@@ -16,7 +16,7 @@ pHead->SetValue(*Monom);
 for (q->Reset(); !q->IsListEnded(); q->GoNext()) {
 InsLast(q->GeTMonom());
 }
-pHead->SetNextLink(*pFirst);
+pHead->SetNextLink(pFirst);
 Reset();
 q->Reset();
 }
@@ -69,14 +69,14 @@ if (IsEmpty()) {
 for (q.Reset(); !q.IsListEnded(); q.GoNext()) {
 InsLast(q.GeTMonom());
 }
-pHead->SetNextLink(*pFirst);
+pHead->SetNextLink(pFirst);
 Reset();
 q.Reset();
 return *this;
 } else {
 TPolinom* that = new TPolinom(q);
 this->pFirst = that->pFirst;
-pHead->SetNextLink(*pFirst);
+pHead->SetNextLink(pFirst);
 return *this;
 }
 }

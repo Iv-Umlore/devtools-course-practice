@@ -5,7 +5,7 @@ void TMonom::SetCoeff(int cval) {
 Coeff = cval;
 }
 
-int TMonom::GetCoeff(void) {
+int TMonom::GetCoeff(void) const {
 return Coeff;
 }
 
@@ -21,15 +21,15 @@ void TMonom::SetIndexZ(int ival) {
 ZInd = ival;
 }
 
-int TMonom::GetIndexX(void) {
+int TMonom::GetIndexX(void) const {
 return XInd;
 }
 
-int TMonom::GetIndexY(void) {
+int TMonom::GetIndexY(void) const {
 return YInd;
 }
 
-int TMonom::GetIndexZ(void) {
+int TMonom::GetIndexZ(void) const {
 return ZInd;
 }
 
@@ -52,7 +52,7 @@ if (tm->GetIndexZ() != 0) os << " * z^" << tm->GetIndexZ();
 return os;
 }
 
-TMonom TMonom::operator*(TMonom mon) {
+TMonom TMonom::operator*(const TMonom &mon) {
 TMonom* that = new TMonom(0, 0, 0, 0);
 that->Coeff = this->Coeff * mon.Coeff;
 that->SetIndexX(this->GetIndexX() + mon.GetIndexX());
@@ -61,17 +61,17 @@ that->SetIndexZ(this->GetIndexZ() + mon.GetIndexZ());
 return *that;
 }
 
-bool TMonom::operator==(const TMonom &tm) {
+bool TMonom::operator==(const TMonom &tm) const {
 return ((Coeff == tm.Coeff) && (XInd == tm.XInd)
 && (YInd == tm.YInd) && (ZInd == tm.ZInd));
 }
 
-bool TMonom::EqualityExponent(TMonom tm) {
+bool TMonom::EqualityExponent(const TMonom &tm) const {
 return (XInd == tm.XInd) && (YInd == tm.YInd)
 && (ZInd == tm.ZInd);
 }
 
-bool TMonom::operator<(TMonom tm) {  //  prioritet x > y > z
+bool TMonom::operator<(const TMonom &tm) const {  //  prioritet x > y > z
 if (EqualityExponent(tm)) return false;
 if (XInd > tm.XInd)
 return false;
@@ -90,7 +90,7 @@ return true;
 return false;
 }
 
-bool TMonom::operator>(TMonom tm) {  //  prioritet x > y > z
+bool TMonom::operator>(const TMonom &tm) const {  //  prioritet x > y > z
 if (EqualityExponent(tm)) return false;
 if (XInd < tm.XInd)
 return false;
