@@ -15,7 +15,6 @@ int ListLen;
 TDatLink* GetLink(TMonom &pVal, TDatLink* pNext);
  public:
 TDatList();
-//TDatList(TDatList &list);
 ~TDatList() {
 DelList();
 }

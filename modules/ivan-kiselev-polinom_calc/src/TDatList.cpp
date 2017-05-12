@@ -19,22 +19,6 @@ CurrPos = 0;
 ListLen = 0;
 }
 
-/*TDatList::TDatList(TDatList & list)
-{
-	pFirst = new TDatLink();
-	pLast = pFirst;
-	pCurrLink = pFirst;
-	pPrevLink = NULL;
-	pStop = pFirst;
-	CurrPos = 0;
-	ListLen = 0;
-	TDatLink* Curr = list.pFirst;
-	while (Curr != list.pStop) {
-		InsLast(Curr->GetLinkMonom());
-		Curr = Curr->GetNextLink();
-	}
-}*/
-
 void TDatList::Reset(void) {
 pCurrLink = pFirst;
 pPrevLink = NULL;

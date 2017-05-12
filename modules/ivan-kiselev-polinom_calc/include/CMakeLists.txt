@@ -1,6 +1,6 @@
 set(target ${LIBRARY})
 
-file(GLOB srcs "../src/*.cxx")
+file(GLOB srcs "../src/*.c*")
 file(GLOB hdrs "*.h")
 set_source_files_properties(${srcs} ${hdrs} PROPERTIES
     LABELS "${MODULE};Library")
