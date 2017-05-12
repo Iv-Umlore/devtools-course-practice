@@ -152,6 +152,6 @@ os << old;
 return os;
 }
 
-TMonom* TPolinom::GetMonom() const {		//гдеяэ
-	return pCurrLink->GetLinkMonom();
+TMonom* TPolinom::GetMonom() const {//гдеяэ
+return pCurrLink->GetLinkMonom();
 }

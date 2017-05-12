@@ -4,139 +4,139 @@
 #include <iostream>
 using namespace std;
 TEST(TMonom, Equal) {
-	TMonom first(10, 20);
-	TMonom second(10, 20);
+TMonom first(10, 20);
+TMonom second(10, 20);
 
-	EXPECT_TRUE(first == second);
+EXPECT_TRUE(first == second);
 }
 
 TEST(TMonom, Not_equal) {
-	TMonom first(10, 20);
-	TMonom second(10, 25);
+TMonom first(10, 20);
+TMonom second(10, 25);
 
-	EXPECT_TRUE(!(first == second));
+EXPECT_TRUE(!(first == second));
 }
 
 TEST(TMonom, EqualityExponent_1) {
-	TMonom* first = new TMonom(5, 1, 4, 3);
-	TMonom* second = new TMonom(7, 1, 4, 3);
+TMonom* first = new TMonom(5, 1, 4, 3);
+TMonom* second = new TMonom(7, 1, 4, 3);
 
-	EXPECT_TRUE(first->EqualityExponent(*second));
+EXPECT_TRUE(first->EqualityExponent(*second));
 }
 
 TEST(TMonom, EqualityExponent_2) {
-	TMonom* first = new TMonom(5, 1, 4, 3);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 1, 4, 3);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_FALSE(first->EqualityExponent(*second));
+EXPECT_FALSE(first->EqualityExponent(*second));
 }
 
 TEST(TMonom, Comparison_of_monomials_1) {
-	TMonom* first = new TMonom(5, 1, 4, 3);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 1, 4, 3);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_TRUE(*second < *first);
+EXPECT_TRUE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_2) {
-	TMonom* first = new TMonom(5, 1, 3, 3);
-	TMonom* second = new TMonom(7, 1, 4, 4);
+TMonom* first = new TMonom(5, 1, 3, 3);
+TMonom* second = new TMonom(7, 1, 4, 4);
 
-	EXPECT_FALSE(*second < *first);
+EXPECT_FALSE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_3) {
-	TMonom* first = new TMonom(5, 1, 3, 3);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 1, 3, 3);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_FALSE(*second < *first);
+EXPECT_FALSE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_4) {
-	TMonom* first = new TMonom(5, 1, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 3);
+TMonom* first = new TMonom(5, 1, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 3);
 
-	EXPECT_TRUE(*second < *first);
+EXPECT_TRUE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_5) {
-	TMonom* first = new TMonom(5, 2, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 2, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_TRUE(*second < *first);
+EXPECT_TRUE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_6) {
-	TMonom* first = new TMonom(5, 0, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 0, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_FALSE(*second < *first);
+EXPECT_FALSE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_7) {
-	TMonom* first = new TMonom(5, 1, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 1, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_FALSE(*second < *first);
+EXPECT_FALSE(*second < *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_21) {
-	TMonom* first = new TMonom(5, 1, 4, 3);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 1, 4, 3);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_FALSE(*second > *first);
+EXPECT_FALSE(*second > *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_22) {
-	TMonom* first = new TMonom(5, 1, 3, 3);
-	TMonom* second = new TMonom(7, 1, 4, 4);
+TMonom* first = new TMonom(5, 1, 3, 3);
+TMonom* second = new TMonom(7, 1, 4, 4);
 
-	EXPECT_TRUE(*second > *first);
+EXPECT_TRUE(*second > *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_23) {
-	TMonom* first = new TMonom(5, 1, 3, 3);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 1, 3, 3);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_TRUE(*second > *first);
+EXPECT_TRUE(*second > *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_24) {
-	TMonom* first = new TMonom(5, 1, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 3);
+TMonom* first = new TMonom(5, 1, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 3);
 
-	EXPECT_FALSE(*second > *first);
+EXPECT_FALSE(*second > *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_25) {
-	TMonom* first = new TMonom(5, 2, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 2, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_FALSE(*second > *first);
+EXPECT_FALSE(*second > *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_26) {
-	TMonom* first = new TMonom(5, 0, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 0, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_TRUE(*second > *first);
+EXPECT_TRUE(*second > *first);
 }
 
 TEST(TMonom, Comparison_of_monomials_27) {
-	TMonom* first = new TMonom(5, 1, 3, 4);
-	TMonom* second = new TMonom(7, 1, 3, 4);
+TMonom* first = new TMonom(5, 1, 3, 4);
+TMonom* second = new TMonom(7, 1, 3, 4);
 
-	EXPECT_FALSE(*second > *first);
+EXPECT_FALSE(*second > *first);
 }
 
 TEST(TMonom, multiplication_Monom) {
-	TMonom first(3, 1, 3, 5);
-	TMonom second(4, 0, -3, 1);
-	TMonom result(12, 1, 0, 6);
+TMonom first(3, 1, 3, 5);
+TMonom second(4, 0, -3, 1);
+TMonom result(12, 1, 0, 6);
 
-	first = first * second;
+first = first * second;
 
-	EXPECT_TRUE(result == first);
+EXPECT_TRUE(result == first);
 }
 
 TEST(TDatLink, Get_DatValue) {

@@ -5,8 +5,8 @@ return pCurrLink->GetLinkMonom();
 }
 
 TDatLink* TDatList::GetLink(TMonom &pVal, TDatLink* pNext) {
-	TDatLink* that = new TDatLink(&pVal, pNext);
-	return that;
+TDatLink* that = new TDatLink(&pVal, pNext);
+return that;
 }
 
 TDatList::TDatList() {
