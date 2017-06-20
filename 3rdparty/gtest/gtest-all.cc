@@ -123,7 +123,7 @@ namespace testing {
 // the second argument to the two arguments constructor.
 class GTEST_API_ ScopedFakeTestPartResultReporter
     : public TestPartResultReporterInterface {
- public:
+  public:
   // The two possible mocking modes of this object.
   enum InterceptMode {
     INTERCEPT_ONLY_CURRENT_THREAD,  // Intercepts only thread local failures.
@@ -167,7 +167,7 @@ namespace internal {
 // type and contains the given substring.  If that's not the case, a
 // non-fatal failure will be generated.
 class GTEST_API_ SingleFailureChecker {
- public:
+  public:
   // The constructor remembers the arguments.
   SingleFailureChecker(const TestPartResultArray* results,
                        TestPartResult::Type type,
@@ -211,7 +211,7 @@ class GTEST_API_ SingleFailureChecker {
 #define EXPECT_FATAL_FAILURE(statement, substr) \
   do { \
     class GTestExpectFatalFailureHelper {\
-     public:\
+      public:\
       static void Execute() { statement; }\
     };\
     ::testing::TestPartResultArray gtest_failures;\
@@ -228,7 +228,7 @@ class GTEST_API_ SingleFailureChecker {
 #define EXPECT_FATAL_FAILURE_ON_ALL_THREADS(statement, substr) \
   do { \
     class GTestExpectFatalFailureHelper {\
-     public:\
+      public:\
       static void Execute() { statement; }\
     };\
     ::testing::TestPartResultArray gtest_failures;\
@@ -560,7 +560,7 @@ inline int GetNextRandomSeed(int seed) {
 // This class saves the values of all Google Test flags in its c'tor, and
 // restores them in its d'tor.
 class GTestFlagSaver {
- public:
+  public:
   // The c'tor.
   GTestFlagSaver() {
     also_run_disabled_tests_ = GTEST_FLAG(also_run_disabled_tests);
@@ -745,7 +745,7 @@ static void Delete(T* x) {
 //
 // TestPropertyKeyIs is copyable.
 class TestPropertyKeyIs {
- public:
+  public:
   // Constructor.
   //
   // TestPropertyKeyIs has NO default constructor.
@@ -771,7 +771,7 @@ class TestPropertyKeyIs {
 // the variable and the flag are present, the latter overrides the
 // former.
 class GTEST_API_ UnitTestOptions {
- public:
+  public:
   // Functions for processing the gtest_output flag.
 
   // Returns the output format, or "" for normal printed output.
@@ -816,7 +816,7 @@ GTEST_API_ FilePath GetCurrentExecutableName();
 
 // The role interface for getting the OS stack trace as a string.
 class OsStackTraceGetterInterface {
- public:
+  public:
   OsStackTraceGetterInterface() {}
   virtual ~OsStackTraceGetterInterface() {}
 
@@ -839,7 +839,7 @@ class OsStackTraceGetterInterface {
 
 // A working implementation of the OsStackTraceGetterInterface interface.
 class OsStackTraceGetter : public OsStackTraceGetterInterface {
- public:
+  public:
   OsStackTraceGetter() : caller_frame_(NULL) {}
 
   virtual string CurrentStackTrace(int max_depth, int skip_count)
@@ -874,7 +874,7 @@ struct TraceInfo {
 // This class should only be used by UnitTestImpl.
 class DefaultGlobalTestPartResultReporter
   : public TestPartResultReporterInterface {
- public:
+  public:
   explicit DefaultGlobalTestPartResultReporter(UnitTestImpl* unit_test);
   // Implements the TestPartResultReporterInterface. Reports the test part
   // result in the current test.
@@ -890,7 +890,7 @@ class DefaultGlobalTestPartResultReporter
 // UnitTestImpl. This class should only be used by UnitTestImpl.
 class DefaultPerThreadTestPartResultReporter
     : public TestPartResultReporterInterface {
- public:
+  public:
   explicit DefaultPerThreadTestPartResultReporter(UnitTestImpl* unit_test);
   // Implements the TestPartResultReporterInterface. The implementation just
   // delegates to the current global test part result reporter of *unit_test_.
@@ -907,7 +907,7 @@ class DefaultPerThreadTestPartResultReporter
 // user and the UnitTest class that delegates work to this class does
 // proper locking.
 class GTEST_API_ UnitTestImpl {
- public:
+  public:
   explicit UnitTestImpl(UnitTest* parent);
   virtual ~UnitTestImpl();
 
@@ -1372,7 +1372,7 @@ GTEST_API_ std::string GetLastErrnoDescription();
 # if GTEST_OS_WINDOWS
 // Provides leak-safe Windows kernel handle ownership.
 class AutoHandle {
- public:
+  public:
   AutoHandle() : handle_(INVALID_HANDLE_VALUE) {}
   explicit AutoHandle(HANDLE handle) : handle_(handle) {}
 
@@ -1448,7 +1448,7 @@ bool ParseNaturalNumber(const ::std::string& str, Integer* number) {
 // This class is supplied only for the purpose of testing Google Test's own
 // constructs. Do not use it in user tests, either directly or indirectly.
 class TestResultAccessor {
- public:
+  public:
   static void RecordProperty(TestResult* test_result,
                              const std::string& xml_element,
                              const TestProperty& property) {
@@ -1469,10 +1469,10 @@ class TestResultAccessor {
 
 // Streams test results to the given port on the given host machine.
 class StreamingListener : public EmptyTestEventListener {
- public:
+  public:
   // Abstract base class for writing strings to a socket.
   class AbstractSocketWriter {
-   public:
+    public:
     virtual ~AbstractSocketWriter() {}
 
     // Sends a string to the socket.
@@ -1489,7 +1489,7 @@ class StreamingListener : public EmptyTestEventListener {
 
   // Concrete class for actually writing strings to a socket.
   class SocketWriter : public AbstractSocketWriter {
-   public:
+    public:
     SocketWriter(const string& host, const string& port)
         : sockfd_(-1), host_name_(host), port_num_(port) {
       MakeConnection();
@@ -3745,7 +3745,7 @@ namespace {
 //
 // TestNameIs is copyable.
 class TestNameIs {
- public:
+  public:
   // Constructor.
   //
   // TestNameIs has NO default constructor.
@@ -4174,7 +4174,7 @@ void PrintFullTestCommentIfPresent(const TestInfo& test_info) {
 //
 // Class PrettyUnitTestResultPrinter is copyable.
 class PrettyUnitTestResultPrinter : public TestEventListener {
- public:
+  public:
   PrettyUnitTestResultPrinter() {}
   static void PrintTestName(const char * test_case, const char * test) {
     printf("%s.%s", test_case, test);
@@ -4381,7 +4381,7 @@ void PrettyUnitTestResultPrinter::OnTestIterationEnd(const UnitTest& unit_test,
 //
 // This class forwards events to other event listeners.
 class TestEventRepeater : public TestEventListener {
- public:
+  public:
   TestEventRepeater() : forwarding_enabled_(true) {}
   virtual ~TestEventRepeater();
   void Append(TestEventListener *listener);
@@ -4494,7 +4494,7 @@ void TestEventRepeater::OnTestIterationEnd(const UnitTest& unit_test,
 
 // This class generates an XML output file.
 class XmlUnitTestResultPrinter : public EmptyTestEventListener {
- public:
+  public:
   explicit XmlUnitTestResultPrinter(const char* output_file);
 
   virtual void OnTestIterationEnd(const UnitTest& unit_test, int iteration);
@@ -5010,7 +5010,7 @@ OsStackTraceGetter::kElidedFramesMarker =
 // A helper class that creates the premature-exit file in its
 // constructor and deletes the file in its destructor.
 class ScopedPrematureExitFile {
- public:
+  public:
   explicit ScopedPrematureExitFile(const char* premature_exit_filepath)
       : premature_exit_filepath_(premature_exit_filepath) {
     // If a path to the premature-exit file is specified...
@@ -5628,7 +5628,7 @@ void UnitTestImpl::PostFlagParsingInit() {
 //
 // TestCaseNameIs is copyable.
 class TestCaseNameIs {
- public:
+  public:
   // Constructor.
   explicit TestCaseNameIs(const std::string& name)
       : name_(name) {}
@@ -7100,7 +7100,7 @@ bool DeathTestImpl::Passed(bool status_ok) {
 // calls, the former are explicitly resolved in the global namespace.
 //
 class WindowsDeathTest : public DeathTestImpl {
- public:
+  public:
   WindowsDeathTest(const char* a_statement,
                    const RE* a_regex,
                    const char* file,
@@ -7268,7 +7268,7 @@ DeathTest::TestRole WindowsDeathTest::AssumeRole() {
 // methods of the DeathTest interface.  Only the AssumeRole method is
 // left undefined.
 class ForkingDeathTest : public DeathTestImpl {
- public:
+  public:
   ForkingDeathTest(const char* statement, const RE* regex);
 
   // All of these virtual functions are inherited from DeathTest.
@@ -7305,7 +7305,7 @@ int ForkingDeathTest::Wait() {
 // A concrete death test class that forks, then immediately runs the test
 // in the child process.
 class NoExecDeathTest : public ForkingDeathTest {
- public:
+  public:
   NoExecDeathTest(const char* a_statement, const RE* a_regex) :
       ForkingDeathTest(a_statement, a_regex) { }
   virtual TestRole AssumeRole();
@@ -7360,7 +7360,7 @@ DeathTest::TestRole NoExecDeathTest::AssumeRole() {
 // program from the beginning, with command-line flags set that cause
 // only this specific death test to be run.
 class ExecDeathTest : public ForkingDeathTest {
- public:
+  public:
   ExecDeathTest(const char* a_statement, const RE* a_regex,
                 const char* file, int line) :
       ForkingDeathTest(a_statement, a_regex), file_(file), line_(line) { }
@@ -7379,7 +7379,7 @@ class ExecDeathTest : public ForkingDeathTest {
 
 // Utility class for accumulating command-line arguments.
 class Arguments {
- public:
+  public:
   Arguments() {
     args_.push_back(NULL);
   }
@@ -8721,7 +8721,7 @@ GTestLog::~GTestLog() {
 
 // Object that captures an output stream (stdout/stderr).
 class CapturedStream {
- public:
+  public:
   // The ctor redirects the stream to a temporary file.
   explicit CapturedStream(int fd) : fd_(fd), uncaptured_fd_(dup(fd)) {
 # if GTEST_OS_WINDOWS
